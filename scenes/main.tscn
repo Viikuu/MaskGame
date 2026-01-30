@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=4 uid="uid://dhva5cgnll5tl"]
+[gd_scene load_steps=10 format=4 uid="uid://dhva5cgnll5tl"]
 
 [ext_resource type="PackedScene" uid="uid://c2v13tvie2ist" path="res://scenes/killzone.tscn" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://bt3loh5cols1i" path="res://scenes/player.tscn" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://cncxt2uayoltn" path="res://tileset/placeholder.png" id="2_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://58snakp02h6f" path="res://icon.svg" id="4_jyhfs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(98, 90)
@@ -55,6 +56,9 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 3
 sources/0 = SubResource("TileSetAtlasSource_0xm2m")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jyhfs"]
+size = Vector2(138, 128.59352)
+
 [node name="Main" type="Node"]
 
 [node name="Killzone" parent="." instance=ExtResource("1_h2yge")]
@@ -78,5 +82,48 @@ position = Vector2(492, 472)
 shape = SubResource("WorldBoundaryShape2D_ig7tw")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAfAB0AAAACAAEAAAAeAB0AAAACAAEAAAAdAB0AAAACAAEAAAAcAB0AAAACAAEAAAAbAB0AAAACAAEAAAAaAB0AAAACAAEAAAAZAB0AAAACAAEAAAAYAB0AAAACAAEAAAAXAB0AAAACAAEAAAAWAB0AAAACAAEAAAAVAB0AAAACAAEAAAAUAB0AAAACAAEAAAATAB0AAAACAAEAAAASAB0AAAACAAEAAAARAB0AAAACAAEAAAAQAB0AAAACAAEAAAAPAB0AAAACAAEAAAAOAB0AAAACAAEAAAANAB0AAAACAAEAAAAMAB0AAAACAAEAAAALAB0AAAACAAEAAAAKAB0AAAACAAEAAAAJAB0AAAACAAEAAAAIAB0AAAACAAEAAAAHAB0AAAACAAEAAAAGAB0AAAACAAEAAAAFAB0AAAACAAEAAAAEAB0AAAACAAEAAAADAB0AAAACAAEAAAACAB0AAAACAAEAAAABAB0AAAACAAEAAAAAAB0AAAACAAEAAAAgAB0AAAACAAEAAAAhAB0AAAACAAEAAAAiAB0AAAACAAEAAAAjAB0AAAACAAEAAAAkAB0AAAACAAEAAAAlAB0AAAACAAEAAAAmAB0AAAACAAEAAAAnAB0AAAACAAEAAAAoAB0AAAACAAEAAAApAB0AAAACAAEAAAAqAB0AAAACAAEAAAArAB0AAAACAAEAAAAsAB0AAAACAAEAAAAtAB0AAAACAAEAAAAuAB0AAAACAAEAAAAvAB0AAAACAAEAAAAwAB0AAAACAAEAAAAxAB0AAAACAAEAAAAyAB0AAAACAAEAAAAzAB0AAAACAAEAAAA0AB0AAAACAAEAAAAnABwAAAACAAEAAAAnABsAAAACAAEAAAAnABoAAAACAAEAAAAnABkAAAACAAEAAAAnABgAAAACAAEAAAAnABcAAAACAAEAAAAnABYAAAACAAEAAAASABwAAAACAAEAAAASABsAAAACAAEAAAASABoAAAACAAEAAAASABkAAAACAAEAAAASABgAAAACAAEAAAASABcAAAACAAEAAAARABYAAAACAAEAAAARABUAAAACAAEAAAARABQAAAACAAEAAAARABMAAAACAAEAAAARABIAAAACAAEAAAA=")
+scale = Vector2(1, 0.9953845)
+tile_map_data = PackedByteArray("AAAfAB0AAAACAAEAAAAeAB0AAAACAAEAAAAdAB0AAAACAAEAAAAcAB0AAAACAAEAAAAbAB0AAAACAAEAAAAaAB0AAAACAAEAAAAZAB0AAAACAAEAAAAYAB0AAAACAAEAAAAXAB0AAAACAAEAAAAWAB0AAAACAAEAAAAVAB0AAAACAAEAAAAUAB0AAAACAAEAAAATAB0AAAACAAEAAAASAB0AAAACAAEAAAARAB0AAAACAAEAAAAQAB0AAAACAAEAAAAPAB0AAAACAAEAAAAOAB0AAAACAAEAAAANAB0AAAACAAEAAAAMAB0AAAACAAEAAAALAB0AAAACAAEAAAAKAB0AAAACAAEAAAAJAB0AAAACAAEAAAAIAB0AAAACAAEAAAAHAB0AAAACAAEAAAAGAB0AAAACAAEAAAAFAB0AAAACAAEAAAAEAB0AAAACAAEAAAADAB0AAAACAAEAAAACAB0AAAACAAEAAAABAB0AAAACAAEAAAAAAB0AAAACAAEAAAAgAB0AAAACAAEAAAAhAB0AAAACAAEAAAAiAB0AAAACAAEAAAAjAB0AAAACAAEAAAAkAB0AAAACAAEAAAAlAB0AAAACAAEAAAAmAB0AAAACAAEAAAAnAB0AAAACAAEAAAAoAB0AAAACAAEAAAApAB0AAAACAAEAAAAqAB0AAAACAAEAAAArAB0AAAACAAEAAAAsAB0AAAACAAEAAAAtAB0AAAACAAEAAAAuAB0AAAACAAEAAAAvAB0AAAACAAEAAAAwAB0AAAACAAEAAAAxAB0AAAACAAEAAAAyAB0AAAACAAEAAAAzAB0AAAACAAEAAAA0AB0AAAACAAEAAAA=")
 tile_set = SubResource("TileSet_h2yge")
+
+[node name="VisibleInFuture" type="StaticBody2D" parent="." groups=["show_in_future"]]
+position = Vector2(775, 394)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="VisibleInFuture"]
+scale = Vector2(1, 0.9953845)
+texture = ExtResource("4_jyhfs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisibleInFuture"]
+position = Vector2(1, -1)
+scale = Vector2(1, 0.9953845)
+shape = SubResource("RectangleShape2D_jyhfs")
+
+[node name="VisibleInPast" type="StaticBody2D" parent="." groups=["show_in_past"]]
+position = Vector2(74, 380)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="VisibleInPast"]
+scale = Vector2(1, 0.9953845)
+texture = ExtResource("4_jyhfs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisibleInPast"]
+position = Vector2(1, -1)
+scale = Vector2(1, 0.9953845)
+shape = SubResource("RectangleShape2D_jyhfs")
+
+[node name="VisibleInNow" type="StaticBody2D" parent="." groups=["show_in_now_only"]]
+position = Vector2(251, 381)
+collision_layer = 4
+collision_mask = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="VisibleInNow"]
+scale = Vector2(1, 0.9953845)
+texture = ExtResource("4_jyhfs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisibleInNow"]
+position = Vector2(1, -1)
+scale = Vector2(1, 0.9953845)
+shape = SubResource("RectangleShape2D_jyhfs")
