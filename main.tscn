@@ -1,9 +1,14 @@
-[gd_scene load_steps=6 format=4 uid="uid://dhva5cgnll5tl"]
+[gd_scene load_steps=8 format=4 uid="uid://dhva5cgnll5tl"]
 
+[ext_resource type="PackedScene" uid="uid://c2v13tvie2ist" path="res://killzone.tscn" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://bt3loh5cols1i" path="res://player.tscn" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://cncxt2uayoltn" path="res://tileset/placeholder.png" id="2_0xm2m"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
+size = Vector2(98, 90)
+
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ig7tw"]
+distance = -3.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0xm2m"]
 texture = ExtResource("2_0xm2m")
@@ -52,6 +57,13 @@ sources/0 = SubResource("TileSetAtlasSource_0xm2m")
 
 [node name="Main" type="Node"]
 
+[node name="Killzone" parent="." instance=ExtResource("1_h2yge")]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(352, 419)
+shape = SubResource("RectangleShape2D_1bvp3")
+
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
 position = Vector2(491, 310)
 
@@ -59,10 +71,10 @@ position = Vector2(491, 310)
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="WorldLimiterLower" type="StaticBody2D" parent="."]
+position = Vector2(492, 472)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(495, 464)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldLimiterLower"]
 shape = SubResource("WorldBoundaryShape2D_ig7tw")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]

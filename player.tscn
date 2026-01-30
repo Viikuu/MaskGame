@@ -8,6 +8,8 @@
 [sub_resource type="GDScript" id="GDScript_hqtel"]
 script/source = "extends CharacterBody2D
 
+class_name Player
+
 @export var max_hp = 10
 var hp = 10
 
@@ -65,7 +67,7 @@ animations = [{
 radius = 27.0
 height = 68.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
 script = SubResource("GDScript_hqtel")
 
