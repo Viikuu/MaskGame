@@ -1,17 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://c2v13tvie2ist"]
 
-[sub_resource type="GDScript" id="GDScript_n74wa"]
-script/source = "extends Area2D
+[ext_resource type="Script" uid="uid://dpn1s65wgcqss" path="res://scripts/killzone.gd" id="1_xlapc"]
 
-
-func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group(\"player\"):
-		print(\"player entered killzone\")
-"
-
-[node name="Killzone" type="Area2D" groups=["player"]]
+[node name="Killzone" type="Area2D"]
 collision_layer = 16
 collision_mask = 2
-script = SubResource("GDScript_n74wa")
+script = ExtResource("1_xlapc")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

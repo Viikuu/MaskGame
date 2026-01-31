@@ -69,7 +69,6 @@ func _try_interact():
 		interaction.interact()
 		if interaction.only_once:
 			nearby_interactions.erase(interaction)
-	
 
 func _on_interaction_zone_area_entered(area: Area2D) -> void:
 	if area is Interactable:
@@ -95,3 +94,6 @@ func _play_movemement_animations():
 func _play_animation(animation):
 	player_sprite.play(animation + "_" + str(MaskManager.current_mask))
 	
+func die():
+	print("game over, player died")
+	CheckpointManager.return_to_last_checkout(self)

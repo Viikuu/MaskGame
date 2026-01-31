@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://bsb6yxtgcuoe1"]
+[gd_scene load_steps=15 format=4 uid="uid://bsb6yxtgcuoe1"]
 
 [ext_resource type="PackedScene" uid="uid://c2v13tvie2ist" path="res://scenes/killzone.tscn" id="1_lb3qe"]
 [ext_resource type="PackedScene" uid="uid://bt3loh5cols1i" path="res://scenes/player.tscn" id="2_eucnt"]
@@ -9,9 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bm5ljdow8cbfk" path="res://scenes/bridge_right.tscn" id="8_26frl"]
 [ext_resource type="PackedScene" uid="uid://dacxjmtgscwg" path="res://scenes/door.tscn" id="8_kb7ad"]
 [ext_resource type="PackedScene" uid="uid://br4tcgxdecluh" path="res://scenes/bridge_left.tscn" id="8_rchlh"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
-size = Vector2(98, 90)
+[ext_resource type="PackedScene" uid="uid://drtesvqp7c31e" path="res://scenes/checkpoint.tscn" id="10_rchlh"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ig7tw"]
 distance = -3.0
@@ -61,21 +59,15 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 3
 sources/0 = SubResource("TileSetAtlasSource_0xm2m")
 
-[node name="Main" type="Node"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_rchlh"]
+radius = 39.012817
 
-[node name="Killzone" parent="." instance=ExtResource("1_lb3qe")]
-visible = false
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
-position = Vector2(352, 419)
-shape = SubResource("RectangleShape2D_1bvp3")
+[node name="Main2" type="Node"]
 
 [node name="Player" parent="." instance=ExtResource("2_eucnt")]
 z_index = 1
 position = Vector2(475, 322)
 scale = Vector2(1.0299578, 1.0027562)
-max_hp = null
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(4, 4)
@@ -108,3 +100,16 @@ position = Vector2(0, 464)
 
 [node name="Bridge2" parent="." instance=ExtResource("8_26frl")]
 position = Vector2(848, 464)
+
+[node name="Checkpoint" parent="." instance=ExtResource("10_rchlh")]
+position = Vector2(-121, 456)
+
+[node name="StartCheckpoint" parent="." instance=ExtResource("10_rchlh")]
+position = Vector2(461, 454)
+is_start_checkpoint = true
+
+[node name="killzone" parent="." instance=ExtResource("1_lb3qe")]
+position = Vector2(925, 444)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
+shape = SubResource("CircleShape2D_rchlh")
