@@ -39,7 +39,7 @@ func _handle_movement(delta: float):
 	
 # Interactions
 func _handle_interactions_input():
-	#if Input.is_action_just_pressed("interact"):
+	if Input.is_action_just_pressed("interact"):
 		_try_interact()
 #
 func _try_interact():
@@ -53,7 +53,7 @@ func _try_interact():
 	
 
 func _on_interaction_zone_area_entered(area: Area2D) -> void:
-	#if area is Interactable:
+	if area is Interactable:
 		nearby_interactions.append(area)
 
 func _on_interaction_zone_area_exited(area: Area2D) -> void:
