@@ -10,6 +10,8 @@ func _on_body_entered(body: Node2D) -> void:
 "
 
 [node name="Killzone" type="Area2D" groups=["player"]]
+collision_layer = 16
+collision_mask = 2
 script = SubResource("GDScript_n74wa")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
