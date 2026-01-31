@@ -1,4 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dmwcrwdr54vhi"]
+[gd_scene load_steps=5 format=3 uid="uid://dmwcrwdr54vhi"]
+
+[ext_resource type="Script" uid="uid://by25b1i8wnuak" path="res://scripts/ui/main_menu.gd" id="1_sl1te"]
+[ext_resource type="PackedScene" uid="uid://bmjhjuoygqt1l" path="res://scenes/ui/message_window.tscn" id="2_fe2o3"]
 
 [sub_resource type="Gradient" id="Gradient_gl0q7"]
 offsets = PackedFloat32Array(0, 0.24666667)
@@ -6,13 +9,15 @@ offsets = PackedFloat32Array(0, 0.24666667)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_t7e0r"]
 gradient = SubResource("Gradient_gl0q7")
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("first_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_sl1te")
+first_button = NodePath("LeftContainer/ButtonContainer/VBoxContainer/StartGame")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
@@ -78,3 +83,11 @@ size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Tu można dać np sprite głównej postaci"
 horizontal_alignment = 1
+
+[node name="AboutWindow" parent="." instance=ExtResource("2_fe2o3")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="LeftContainer/ButtonContainer/VBoxContainer/StartGame" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="LeftContainer/ButtonContainer/VBoxContainer/About" to="." method="_on_about_pressed"]
+[connection signal="pressed" from="LeftContainer/ButtonContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
