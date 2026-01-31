@@ -1,4 +1,4 @@
-extends Control
+extends BaseMenu
 
 
 # Called when the node enters the scene tree for the first time.
@@ -7,6 +7,7 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
+	super._input(event)
 	if event.is_action_pressed("ui_cancel"):
 		toggle_pause()
 
