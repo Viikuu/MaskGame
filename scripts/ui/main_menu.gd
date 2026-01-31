@@ -1,6 +1,8 @@
-extends Control
+extends BaseMenu
 
 @onready var about_window: Control = $AboutWindow	
+@onready var start_game: Button = $LeftContainer/ButtonContainer/VBoxContainer/StartGame
+
 
 func _on_start_game_pressed() -> void:
 	get_tree().change_scene_to_file("res://main.tscn")

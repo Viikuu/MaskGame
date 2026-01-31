@@ -9,7 +9,7 @@ offsets = PackedFloat32Array(0, 0.24666667)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_t7e0r"]
 gradient = SubResource("Gradient_gl0q7")
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("first_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,6 +17,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sl1te")
+first_button = NodePath("LeftContainer/ButtonContainer/VBoxContainer/StartGame")
 
 [node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
