@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=3 uid="uid://6haeqhvric21"]
+
+[ext_resource type="Script" uid="uid://cf5rtchkuv3d7" path="res://scripts/lever_base.gd" id="1_uiibf"]
+[ext_resource type="PackedScene" uid="uid://b3qvopux5mj5d" path="res://scenes/interactable.tscn" id="2_uiibf"]
+[ext_resource type="Texture2D" uid="uid://cfrd50au3c2cd" path="res://art_me/LeverHandle.png" id="2_v47id"]
+[ext_resource type="Texture2D" uid="uid://0qaw8k3j861r" path="res://art_me/LeverBase.png" id="3_uiibf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wy8tx"]
+
+[sub_resource type="Animation" id="Animation_uiibf"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeverHandle:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.0471976, 1.0471976]
+}
+
+[sub_resource type="Animation" id="Animation_8l1fm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeverHandle:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.0471976]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_reeyv"]
+_data = {
+&"RESET": SubResource("Animation_8l1fm"),
+&"open": SubResource("Animation_uiibf")
+}
+
+[node name="LeverBase" type="Node2D"]
+script = ExtResource("1_uiibf")
+
+[node name="Interactable" parent="." instance=ExtResource("2_uiibf")]
+collision_layer = 12
+
+[node name="InteractionAndMaskZone" type="CollisionShape2D" parent="Interactable"]
+shape = SubResource("RectangleShape2D_wy8tx")
+
+[node name="LeverHandle" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 9)
+rotation = -1.0471976
+texture = ExtResource("2_v47id")
+offset = Vector2(0, -15)
+
+[node name="LeverHandleAnimation" type="AnimationPlayer" parent="LeverHandle"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_reeyv")
+}
+
+[node name="LeverBase" type="Sprite2D" parent="."]
+position = Vector2(0, -6)
+texture = ExtResource("3_uiibf")

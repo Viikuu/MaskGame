@@ -1,0 +1,69 @@
+[gd_scene load_steps=11 format=3 uid="uid://dacxjmtgscwg"]
+
+[ext_resource type="Script" uid="uid://cicnknrhykucb" path="res://scripts/door.gd" id="1_83dcw"]
+[ext_resource type="PackedScene" uid="uid://d16lob5v8afp2" path="res://scenes/lock.tscn" id="2_83dcw"]
+[ext_resource type="Texture2D" uid="uid://bsa0rf2dnfcby" path="res://art_me/Door-Sheet.png" id="2_uvdjg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_83dcw"]
+atlas = ExtResource("2_uvdjg")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_la1wf"]
+atlas = ExtResource("2_uvdjg")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18pbm"]
+atlas = ExtResource("2_uvdjg")
+region = Rect2(64, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q5w8r"]
+atlas = ExtResource("2_uvdjg")
+region = Rect2(96, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t58dd"]
+atlas = ExtResource("2_uvdjg")
+region = Rect2(128, 0, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ju5n0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_83dcw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_la1wf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18pbm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q5w8r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t58dd")
+}],
+"loop": false,
+"name": &"open",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uvdjg"]
+size = Vector2(8, 48)
+
+[node name="Door" type="Node2D"]
+script = ExtResource("1_83dcw")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+visibility_layer = 2
+rotation = 0.006723991
+sprite_frames = SubResource("SpriteFrames_ju5n0")
+animation = &"open"
+
+[node name="DoorColider" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorColider"]
+position = Vector2(8, 0)
+shape = SubResource("RectangleShape2D_uvdjg")
+
+[node name="Lock" parent="." instance=ExtResource("2_83dcw")]
+position = Vector2(14, 12)

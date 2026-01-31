@@ -23,4 +23,8 @@ func can_interact():
 		return false
 	if is_in_group("show_in_future") and MaskManager.current_mask != MaskManager.MASK.FUTURE:
 		return false
+		
+	if owner.has_method("can_interact"):
+		return owner.can_interact()
+		
 	return true
