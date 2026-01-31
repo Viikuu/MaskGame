@@ -5,6 +5,10 @@ func _init():
 
 func use():
 	pass
+	
+class LeverHandle extends Item:
+	func use():
+		print("lever handle has been used")
 
 class Key extends Item:
 	func use():
