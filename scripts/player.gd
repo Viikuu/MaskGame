@@ -5,7 +5,8 @@ class_name Player
 @export var max_hp = 10
 var hp = 10
 
-
+@onready var death_timer: Timer = $DeathTimer
+@onready var death_animation_player: AnimationPlayer = $DeathAnimationPlayer
 @onready var player_sprite: AnimatedSprite2D = $Future
 @onready var item_sprite: Sprite2D = $Future/ItemSprite
 
@@ -95,5 +96,14 @@ func _play_animation(animation):
 	player_sprite.play(animation + "_" + str(MaskManager.current_mask))
 	
 func die():
+	print("start death process")
+	death_timer.start(death_animation_player.get_animation("death").length)
+	death_animation_player.play("death")
+	get_tree().paused = true
+	
+func _on_death_timer_timeout() -> void:
+	get_tree().paused = false
+	death_timer.stop()
+	death_animation_player.play("RESET")
 	print("game over, player died")
 	CheckpointManager.return_to_last_checkout(self)

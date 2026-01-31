@@ -10,5 +10,5 @@ class Checkpoint:
 func set_checkpoint(checkpoint: Checkpoint):
 	current_checkpoint = checkpoint
 	
-func return_to_last_checkout(player: Player):
+func return_to_last_checkout(player):
 	player.global_position = current_checkpoint.respawn
