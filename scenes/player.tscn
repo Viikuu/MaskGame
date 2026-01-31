@@ -1,17 +1,191 @@
-[gd_scene load_steps=7 format=3 uid="uid://bt3loh5cols1i"]
+[gd_scene load_steps=30 format=3 uid="uid://bt3loh5cols1i"]
 
 [ext_resource type="Script" uid="uid://dckrhc5heh0nw" path="res://scripts/player.gd" id="1_tuyoq"]
-[ext_resource type="Texture2D" uid="uid://c166n1lyxdge2" path="res://art_me/Dżoszuła.png" id="2_g2els"]
+[ext_resource type="Texture2D" uid="uid://ffks0n7yluwy" path="res://art_me/Character/Dżoszuła_Fall_Przeszłość.png" id="2_f1ej7"]
+[ext_resource type="Texture2D" uid="uid://dpk6vbjxtl5kf" path="res://art_me/Character/Dżoszuła_Fall_Teraz.png" id="2_tuyoq"]
+[ext_resource type="Texture2D" uid="uid://g7xsbtdc3fdh" path="res://art_me/Character/Dżoszuła_Idle_Terz.png" id="3_fjrip"]
+[ext_resource type="Texture2D" uid="uid://cyso1s4jaciq6" path="res://art_me/Character/Dżoszuła_Fall_Przyszłość.png" id="4_oprun"]
+[ext_resource type="Texture2D" uid="uid://b6obm4g4j6ylu" path="res://art_me/Character/Dżoszuła_Jump_Teraz.png" id="4_smehm"]
+[ext_resource type="Texture2D" uid="uid://dj045qu6vrsvd" path="res://art_me/Character/Dżoszuła_Idle_Przeszłość.png" id="5_a8ls1"]
 [ext_resource type="PackedScene" uid="uid://b8os61ysb2ysd" path="res://scenes/mask_effect_bubble.tscn" id="5_qlg0r"]
+[ext_resource type="Texture2D" uid="uid://cxl3hhsrcpw5v" path="res://art_me/Character/Dżoszuła_Walk_Teraz.png" id="5_ur7pv"]
+[ext_resource type="Texture2D" uid="uid://c5j16ddi3byx8" path="res://art_me/Character/Dżoszuła_Idle_Przyszłość.png" id="7_qfm1y"]
+[ext_resource type="Texture2D" uid="uid://bbjsijyr7ok8e" path="res://art_me/Character/Dżoszuła_Jump_Przeszłość.png" id="8_fulsm"]
+[ext_resource type="Texture2D" uid="uid://divduvioglie2" path="res://art_me/Character/Dżoszuła_Jump_Przyszłość.png" id="10_4r5pv"]
+[ext_resource type="Texture2D" uid="uid://bhadatp2c2l17" path="res://art_me/Character/Dżoszuła_Walk_Przeszłość.png" id="11_60mlk"]
+[ext_resource type="Texture2D" uid="uid://c3r61vrl0ppx6" path="res://art_me/Character/Dżoszuła_Walk_Przyszłość.png" id="13_i4ail"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a38lo"]
+atlas = ExtResource("11_60mlk")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ni07"]
+atlas = ExtResource("11_60mlk")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l71n6"]
+atlas = ExtResource("11_60mlk")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ke2ow"]
+atlas = ExtResource("11_60mlk")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4r1p"]
+atlas = ExtResource("5_ur7pv")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2wvv"]
+atlas = ExtResource("5_ur7pv")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3v2ag"]
+atlas = ExtResource("5_ur7pv")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jej6c"]
+atlas = ExtResource("5_ur7pv")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujl30"]
+atlas = ExtResource("13_i4ail")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31cv2"]
+atlas = ExtResource("13_i4ail")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pf23h"]
+atlas = ExtResource("13_i4ail")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dt7fs"]
+atlas = ExtResource("13_i4ail")
+region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sh265"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_g2els")
+"texture": ExtResource("2_f1ej7")
 }],
 "loop": true,
-"name": &"walk",
+"name": &"fall_0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_tuyoq")
+}],
+"loop": true,
+"name": &"fall_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_oprun")
+}],
+"loop": true,
+"name": &"fall_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_a8ls1")
+}],
+"loop": true,
+"name": &"idle_0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_fjrip")
+}],
+"loop": true,
+"name": &"idle_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_qfm1y")
+}],
+"loop": true,
+"name": &"idle_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_fulsm")
+}],
+"loop": true,
+"name": &"jump_0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_smehm")
+}],
+"loop": true,
+"name": &"jump_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_4r5pv")
+}],
+"loop": true,
+"name": &"jump_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a38lo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ni07")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l71n6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ke2ow")
+}],
+"loop": true,
+"name": &"walk_0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y4r1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2wvv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3v2ag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jej6c")
+}],
+"loop": true,
+"name": &"walk_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ujl30")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31cv2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pf23h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dt7fs")
+}],
+"loop": true,
+"name": &"walk_2",
 "speed": 5.0
 }]
 
@@ -28,10 +202,10 @@ floor_stop_on_slope = false
 floor_snap_length = 10.0
 script = ExtResource("1_tuyoq")
 
-[node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
+[node name="Future" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.9918935, 1)
 sprite_frames = SubResource("SpriteFrames_sh265")
-animation = &"walk"
+animation = &"walk_2"
 
 [node name="WorldCollisions" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_dw050")
