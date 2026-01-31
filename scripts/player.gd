@@ -125,3 +125,8 @@ func _on_death_timer_timeout() -> void:
 	death_animation_player.play("RESET")
 	print("game over, player died")
 	CheckpointManager.return_to_last_checkout(self)
+	
+
+# Killzone interactions
+func _on_killzone_detector_body_entered(body: Node2D) -> void:\
+	die()
