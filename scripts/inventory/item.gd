@@ -11,7 +11,7 @@ func use():
 class LeverHandle extends Item:
 	func _init():
 		super._init()
-		in_hand_texture = load("res://art_me/LeverHandle.png")
+		in_hand_texture = load("res://art_me/Lever_Small.png")
 	
 	func use():
 		print("lever handle has been used")
@@ -19,7 +19,7 @@ class LeverHandle extends Item:
 class Key extends Item:
 	func _init():
 		super._init()
-		in_hand_texture = load("res://art_me/Key.png")
+		in_hand_texture = load("res://art_me/KeySmall.png")
 	
 	func use():
 		print("key has been used")

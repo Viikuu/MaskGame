@@ -31,6 +31,10 @@ scale = Vector2(0.9918935, 1)
 sprite_frames = SubResource("SpriteFrames_sh265")
 animation = &"walk"
 
+[node name="ItemSprite" type="Sprite2D" parent="PlayerSprite"]
+scale = Vector2(1.0081728, 0.99999994)
+offset = Vector2(0, 5)
+
 [node name="WorldCollisions" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_dw050")
 
@@ -46,8 +50,6 @@ shape = SubResource("CapsuleShape2D_qlg0r")
 [node name="MaskEffectBubble" parent="." instance=ExtResource("5_qlg0r")]
 visible = false
 scale = Vector2(4, 4.1223006)
-
-[node name="ItemSprite" type="Sprite2D" parent="."]
 
 [connection signal="area_entered" from="InteractionZone" to="." method="_on_interaction_zone_area_entered"]
 [connection signal="area_exited" from="InteractionZone" to="." method="_on_interaction_zone_area_exited"]

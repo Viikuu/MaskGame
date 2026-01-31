@@ -6,10 +6,11 @@ class_name Player
 var hp = 10
 
 @onready var player_sprite: AnimatedSprite2D = $PlayerSprite
-@onready var item_sprite: Sprite2D = $ItemSprite
+@onready var item_sprite: Sprite2D = $PlayerSprite/ItemSprite
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -100.0
+const ITEM_SHIFT = 7
 
 var nearby_interactions: Array[Interactable] = []
 
@@ -40,9 +41,12 @@ func _handle_movement(delta: float):
 	var direction := Input.get_axis("move_left", "move_right")
 	if direction:
 		velocity.x = direction * SPEED
-		player_sprite.flip_h = velocity.x <= 0
+		var isWalkingLeft: bool = velocity.x <= 0
+		player_sprite.flip_h = isWalkingLeft
+		item_sprite.flip_h = !isWalkingLeft
+		item_sprite.position = Vector2(-ITEM_SHIFT, 0) if isWalkingLeft else Vector2(ITEM_SHIFT, 0)
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, SPEED)	
 
 
 	move_and_slide()
