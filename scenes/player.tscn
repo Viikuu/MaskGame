@@ -27,6 +27,7 @@ collision_layer = 2
 script = ExtResource("1_tuyoq")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.9918935, 1)
 sprite_frames = SubResource("SpriteFrames_sh265")
 animation = &"walk"
 
