@@ -29,9 +29,10 @@ window/stretch/mode="canvas_items"
 [global_group]
 
 player=""
-show_in_past=""
-show_in_future=""
-show_in_now_only=""
+future_source=""
+future_visible=""
+past_source=""
+past_visible=""
 
 [input]
 

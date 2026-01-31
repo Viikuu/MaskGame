@@ -5,6 +5,7 @@ class_name Player
 @export var max_hp = 10
 var hp = 10
 
+@onready var reveal_zone: RevealZone = $RevealZone
 
 @onready var player_sprite: AnimatedSprite2D = $Future
 @onready var item_sprite: Sprite2D = $Future/ItemSprite
@@ -14,7 +15,7 @@ var hp = 10
 @export var JUMP_DETECTION_THRESHOLD = 50
 @export var CLIMB_SPEED = 75
 const ITEM_SHIFT = 7
-
+var currentMask = RevealZone.Mode.NOW
 var can_climb := false
 var is_climbing := false
 
@@ -32,11 +33,27 @@ func onItemChange(new_item: Item):
 func _physics_process(delta: float) -> void:
 	_handle_movement(delta)
 	_handle_interactions_input()
-	
+	reveal_zone.update_if_needed(global_position)
+
 func _process(delta: float) -> void:
 	_play_movemement_animations()
 	
 func _handle_movement(delta: float):
+	#if Input.is_action_just_pressed("mask_past"):
+		#currentMask = RevealZone.Mode.PAST
+		#reveal_zone.set_mode(currentMask)
+		#reveal_zone.update_if_needed(global_position)
+		#print(1)
+	#if Input.is_action_just_pressed("mask_now"):
+		#currentMask = RevealZone.Mode.NOW
+		#reveal_zone.set_mode(currentMask)
+		#reveal_zone.update_if_needed(global_position)
+		#print(2)
+	#if Input.is_action_just_pressed("mask_future"):
+		#currentMask = RevealZone.Mode.FUTURE
+		#reveal_zone.set_mode(currentMask)
+		#reveal_zone.update_if_needed(global_position)
+		#print(3)
 	# Add the gravity.
 	if not is_on_floor() and not is_climbing:
 		velocity += get_gravity() * delta
