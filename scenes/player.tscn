@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bt3loh5cols1i"]
+[gd_scene load_steps=34 format=3 uid="uid://bt3loh5cols1i"]
 
 [ext_resource type="Script" uid="uid://dckrhc5heh0nw" path="res://scripts/player.gd" id="1_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://ffks0n7yluwy" path="res://art_me/Character/Dżoszuła_Fall_Przeszłość.png" id="2_f1ej7"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://divduvioglie2" path="res://art_me/Character/Dżoszuła_Jump_Przyszłość.png" id="10_4r5pv"]
 [ext_resource type="Texture2D" uid="uid://bhadatp2c2l17" path="res://art_me/Character/Dżoszuła_Walk_Przeszłość.png" id="11_60mlk"]
 [ext_resource type="Texture2D" uid="uid://c3r61vrl0ppx6" path="res://art_me/Character/Dżoszuła_Walk_Przyszłość.png" id="13_i4ail"]
+[ext_resource type="PackedScene" uid="uid://d1isr44cun43a" path="res://scenes/camera_rig.tscn" id="15_oprun"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a38lo"]
 atlas = ExtResource("11_60mlk")
@@ -306,6 +307,8 @@ libraries = {
 [node name="DeathTimer" type="Timer" parent="."]
 process_mode = 3
 wait_time = 0.5
+
+[node name="CameraRig" parent="." instance=ExtResource("15_oprun")]
 
 [connection signal="area_entered" from="InteractionZone" to="." method="_on_interaction_zone_area_entered"]
 [connection signal="area_exited" from="InteractionZone" to="." method="_on_interaction_zone_area_exited"]

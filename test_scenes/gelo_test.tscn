@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://bsb6yxtgcuoe1"]
+[gd_scene load_steps=16 format=4 uid="uid://bsb6yxtgcuoe1"]
 
 [ext_resource type="PackedScene" uid="uid://c2v13tvie2ist" path="res://scenes/killzone.tscn" id="1_lb3qe"]
 [ext_resource type="PackedScene" uid="uid://bt3loh5cols1i" path="res://scenes/player.tscn" id="2_eucnt"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dacxjmtgscwg" path="res://scenes/door.tscn" id="8_kb7ad"]
 [ext_resource type="PackedScene" uid="uid://br4tcgxdecluh" path="res://scenes/bridge_left.tscn" id="8_rchlh"]
 [ext_resource type="PackedScene" uid="uid://drtesvqp7c31e" path="res://scenes/checkpoint.tscn" id="10_rchlh"]
+[ext_resource type="PackedScene" path="res://scenes/ladder.tscn" id="11_5lhsb"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ig7tw"]
 distance = -3.0
@@ -69,10 +70,6 @@ z_index = 1
 position = Vector2(574, 433)
 scale = Vector2(1.0299578, 1.0027562)
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(4, 4)
-position_smoothing_enabled = true
-
 [node name="WorldLimiterLower" type="StaticBody2D" parent="."]
 position = Vector2(492, 472)
 
@@ -113,3 +110,6 @@ position = Vector2(925, 444)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
 shape = SubResource("CircleShape2D_rchlh")
+
+[node name="Ladder" parent="." instance=ExtResource("11_5lhsb")]
+position = Vector2(338, 454)
