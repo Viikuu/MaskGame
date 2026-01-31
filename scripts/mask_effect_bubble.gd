@@ -6,7 +6,6 @@ func _ready():
 	MaskManager.mask_changed.connect(_on_mask_changed)
 
 func _on_body_entered(body: Node2D) -> void:
-	print("body entered")
 	_evaluate_body_enter(body)
 
 func _on_body_exited(body: Node2D) -> void:
