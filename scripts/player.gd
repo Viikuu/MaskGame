@@ -9,10 +9,14 @@ var hp = 10
 @onready var player_sprite: AnimatedSprite2D = $Future
 @onready var item_sprite: Sprite2D = $Future/ItemSprite
 
-const SPEED = 100.0
-const JUMP_VELOCITY = -200.0
+@export var SPEED = 100.0
+@export var JUMP_VELOCITY = -200.0
+@export var JUMP_DETECTION_THRESHOLD = 50
+@export var CLIMB_SPEED = 75
 const ITEM_SHIFT = 7
 
+var can_climb := false
+var is_climbing := false
 
 var nearby_interactions: Array[Interactable] = []
 
@@ -34,16 +38,30 @@ func _process(delta: float) -> void:
 	
 func _handle_movement(delta: float):
 	# Add the gravity.
-	if not is_on_floor():
+	if not is_on_floor() and not is_climbing:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		
+	var input_y := Input.get_axis("move_up", "move_down")
+	# Start/stop climbing when inside ladder area
+	#print(input_y, can_climb, is_climbing)
+	if can_climb and abs(input_y) > 0.0:
+		is_climbing = true
+	elif not can_climb:
+		is_climbing = false
+
+	if is_climbing:
+		# no gravity while climbing
+		velocity.y = input_y * CLIMB_SPEED
+	
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("move_left", "move_right")
+	
 	if direction:
 		velocity.x = direction * SPEED
 		var isWalkingLeft: bool = velocity.x <= 0

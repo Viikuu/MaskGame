@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cyso1s4jaciq6" path="res://art_me/Character/Dżoszuła_Fall_Przyszłość.png" id="4_oprun"]
 [ext_resource type="Texture2D" uid="uid://b6obm4g4j6ylu" path="res://art_me/Character/Dżoszuła_Jump_Teraz.png" id="4_smehm"]
 [ext_resource type="Texture2D" uid="uid://dj045qu6vrsvd" path="res://art_me/Character/Dżoszuła_Idle_Przeszłość.png" id="5_a8ls1"]
-[ext_resource type="PackedScene" uid="uid://b8os61ysb2ysd" path="res://scenes/mask_effect_bubble.tscn" id="5_qlg0r"]
+[ext_resource type="PackedScene" path="res://scenes/mask_effect_bubble.tscn" id="5_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://cxl3hhsrcpw5v" path="res://art_me/Character/Dżoszuła_Walk_Teraz.png" id="5_ur7pv"]
 [ext_resource type="Texture2D" uid="uid://c5j16ddi3byx8" path="res://art_me/Character/Dżoszuła_Idle_Przyszłość.png" id="7_qfm1y"]
 [ext_resource type="Texture2D" uid="uid://bbjsijyr7ok8e" path="res://art_me/Character/Dżoszuła_Jump_Przeszłość.png" id="8_fulsm"]
