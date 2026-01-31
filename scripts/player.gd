@@ -5,12 +5,14 @@ class_name Player
 @export var max_hp = 10
 var hp = 10
 
-@onready var player_sprite: AnimatedSprite2D = $PlayerSprite
+
+@onready var player_sprite: AnimatedSprite2D = $Future
 @onready var item_sprite: Sprite2D = $PlayerSprite/ItemSprite
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -100.0
+const SPEED = 100.0
+const JUMP_VELOCITY = -200.0
 const ITEM_SHIFT = 7
+
 
 var nearby_interactions: Array[Interactable] = []
 
@@ -26,6 +28,9 @@ func onItemChange(new_item: Item):
 func _physics_process(delta: float) -> void:
 	_handle_movement(delta)
 	_handle_interactions_input()
+	
+func _process(delta: float) -> void:
+	_play_movemement_animations()
 	
 func _handle_movement(delta: float):
 	# Add the gravity.
@@ -73,3 +78,20 @@ func _on_interaction_zone_area_entered(area: Area2D) -> void:
 func _on_interaction_zone_area_exited(area: Area2D) -> void:
 	if area is Interactable:
 		nearby_interactions.erase(area)
+		
+		
+func _play_movemement_animations():
+	if not is_on_floor():
+		if velocity.y > 0 and player_sprite.animation.begins_with("fall"):
+			_play_animation("fall")
+		if velocity.y < 0 and player_sprite.animation.begins_with("jump"):
+			_play_animation("jump")
+	else:
+		if velocity.x != 0:
+			_play_animation("walk")
+		else:
+			_play_animation("idle")
+			
+func _play_animation(animation):
+	player_sprite.play(animation + "_" + str(MaskManager.current_mask))
+	
