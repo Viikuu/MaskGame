@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://bsb6yxtgcuoe1"]
+[gd_scene load_steps=19 format=4 uid="uid://bsb6yxtgcuoe1"]
 
 [ext_resource type="PackedScene" uid="uid://c2v13tvie2ist" path="res://scenes/killzone.tscn" id="1_lb3qe"]
 [ext_resource type="PackedScene" uid="uid://bt3loh5cols1i" path="res://scenes/player.tscn" id="2_eucnt"]
@@ -11,6 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://br4tcgxdecluh" path="res://scenes/bridge_left.tscn" id="8_rchlh"]
 [ext_resource type="PackedScene" uid="uid://drtesvqp7c31e" path="res://scenes/checkpoint.tscn" id="10_rchlh"]
 [ext_resource type="PackedScene" path="res://scenes/ladder.tscn" id="11_5lhsb"]
+[ext_resource type="PackedScene" uid="uid://q7kj83nracch" path="res://scenes/pickups/future_mask_pickup.tscn" id="12_q5k2s"]
+[ext_resource type="PackedScene" uid="uid://bng1nagcfw78q" path="res://scenes/pickups/past_mask_pickup.tscn" id="13_3soik"]
+[ext_resource type="PackedScene" uid="uid://dten0kswytnfd" path="res://scenes/ui/player_ui.tscn" id="14_3soik"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ig7tw"]
 distance = -3.0
@@ -113,3 +116,13 @@ shape = SubResource("CircleShape2D_rchlh")
 
 [node name="Ladder" parent="." instance=ExtResource("11_5lhsb")]
 position = Vector2(338, 454)
+
+[node name="FutureMaskPickup" parent="." instance=ExtResource("12_q5k2s")]
+position = Vector2(224, 448)
+
+[node name="PastMaskPickup" parent="." instance=ExtResource("13_3soik")]
+position = Vector2(151, 448)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PlayerUI" parent="CanvasLayer" instance=ExtResource("14_3soik")]

@@ -14,6 +14,9 @@ func _draw() -> void:
 
 func _on_ready() -> void:
 	MaskManager.mask_changed.connect(onMaskChanged)
+	MaskManager.future_mask_available.connect(_enable_future_mask)
+	MaskManager.past_mask_available.connect(_enable_past_mask)
+	
 	(no_mask.material as ShaderMaterial).set_shader_parameter("outline_color", Color.LIGHT_GRAY)
 	
 
@@ -34,3 +37,9 @@ func onMaskChanged(previousMask: MaskManager.MASK, currentMask: MaskManager.MASK
 				(no_mask.material as ShaderMaterial).set_shader_parameter("outline_color", Color.TRANSPARENT)
 			2:
 				(future_mask.material as ShaderMaterial).set_shader_parameter("outline_color", Color.TRANSPARENT)
+				
+func _enable_future_mask():
+	future_mask.visible = true
+
+func _enable_past_mask():
+	past_mask.visible = true

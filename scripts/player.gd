@@ -130,5 +130,5 @@ func _on_death_timer_timeout() -> void:
 	
 
 # Killzone interactions
-func _on_killzone_detector_body_entered(body: Node2D) -> void:\
+func _on_killzone_detector_body_entered(body: Node2D) -> void:
 	die()
