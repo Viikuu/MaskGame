@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5hja1h2kfs8q"]
+
+[ext_resource type="Script" uid="uid://bqeob4a7dsb5m" path="res://scripts/lever_handle.gd" id="1_i6eep"]
+[ext_resource type="PackedScene" uid="uid://b3qvopux5mj5d" path="res://scenes/interactable.tscn" id="2_ew31p"]
+[ext_resource type="Texture2D" uid="uid://cfrd50au3c2cd" path="res://art_me/LeverHandle.png" id="3_i6eep"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wy8tx"]
+size = Vector2(29, 6)
+
+[node name="LeverHandle" type="Node2D"]
+script = ExtResource("1_i6eep")
+
+[node name="Interactable" parent="." instance=ExtResource("2_ew31p")]
+collision_layer = 12
+only_once = true
+
+[node name="InteractionAndMaskZone" type="CollisionShape2D" parent="Interactable"]
+position = Vector2(1.5, 0)
+shape = SubResource("RectangleShape2D_wy8tx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -1.5707964
+texture = ExtResource("3_i6eep")
