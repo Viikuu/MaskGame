@@ -6,11 +6,21 @@ class_name Player
 var hp = 10
 
 @onready var player_sprite: AnimatedSprite2D = $PlayerSprite
+@onready var item_sprite: Sprite2D = $ItemSprite
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -100.0
 
 var nearby_interactions: Array[Interactable] = []
+
+func _ready() -> void:
+	InventoryManager.item_changed.connect(onItemChange)
+
+func onItemChange(new_item: Item):
+	if new_item != null:
+		item_sprite.texture = new_item.in_hand_texture
+	else:
+		item_sprite.texture = null
 
 func _physics_process(delta: float) -> void:
 	_handle_movement(delta)

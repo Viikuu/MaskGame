@@ -47,6 +47,8 @@ shape = SubResource("CapsuleShape2D_qlg0r")
 visible = false
 scale = Vector2(4, 4.1223006)
 
+[node name="ItemSprite" type="Sprite2D" parent="."]
+
 [connection signal="area_entered" from="InteractionZone" to="." method="_on_interaction_zone_area_entered"]
 [connection signal="area_exited" from="InteractionZone" to="." method="_on_interaction_zone_area_exited"]
 [connection signal="body_entered" from="InteractionZone" to="." method="_on_interaction_zone_body_entered"]
