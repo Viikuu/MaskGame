@@ -72,3 +72,7 @@ mask_future={
 2d_physics/layer_1="Ground"
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Mask Detection"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
