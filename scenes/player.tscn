@@ -1,0 +1,53 @@
+[gd_scene load_steps=7 format=3 uid="uid://bt3loh5cols1i"]
+
+[ext_resource type="Script" uid="uid://dckrhc5heh0nw" path="res://scripts/player.gd" id="1_tuyoq"]
+[ext_resource type="Texture2D" uid="uid://c166n1lyxdge2" path="res://art_me/Dżoszuła.png" id="2_g2els"]
+[ext_resource type="PackedScene" uid="uid://b8os61ysb2ysd" path="res://scenes/mask_effect_bubble.tscn" id="5_qlg0r"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sh265"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_g2els")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dw050"]
+height = 32.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qlg0r"]
+radius = 43.0
+height = 88.0
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+collision_layer = 2
+script = ExtResource("1_tuyoq")
+
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.9918935, 1)
+sprite_frames = SubResource("SpriteFrames_sh265")
+animation = &"walk"
+
+[node name="WorldCollisions" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_dw050")
+
+[node name="InteractionZone" type="Area2D" parent="."]
+scale = Vector2(0.8474453, 0.8868216)
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone"]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_qlg0r")
+
+[node name="MaskEffectBubble" parent="." instance=ExtResource("5_qlg0r")]
+visible = false
+scale = Vector2(4, 4.1223006)
+
+[connection signal="area_entered" from="InteractionZone" to="." method="_on_interaction_zone_area_entered"]
+[connection signal="area_exited" from="InteractionZone" to="." method="_on_interaction_zone_area_exited"]
+[connection signal="body_entered" from="InteractionZone" to="." method="_on_interaction_zone_body_entered"]
+[connection signal="body_exited" from="InteractionZone" to="." method="_on_interaction_zone_body_exited"]

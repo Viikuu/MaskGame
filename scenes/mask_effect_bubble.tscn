@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8os61ysb2ysd"]
+
+[ext_resource type="Script" uid="uid://bwo63og0hf7n3" path="res://scripts/mask_effect_bubble.gd" id="1_e0xjs"]
+[ext_resource type="Texture2D" uid="uid://58snakp02h6f" path="res://icon.svg" id="2_g8erm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2bfri"]
+
+[node name="MaskEffectBubble" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_e0xjs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2bfri")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.06666667)
+scale = Vector2(0.15625, 0.15625)
+texture = ExtResource("2_g8erm")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
