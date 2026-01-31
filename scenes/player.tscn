@@ -24,6 +24,8 @@ height = 88.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
+floor_stop_on_slope = false
+floor_snap_length = 10.0
 script = ExtResource("1_tuyoq")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
