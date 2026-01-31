@@ -19,7 +19,6 @@ config/icon="res://icon.svg"
 
 MaskManager="*res://scripts/mask_manager.gd"
 InventoryManager="*res://scripts/inventory/inventory_manager.gd"
-CheckpointManager="*res://scripts/checkpoint/checkpoint_manager.gd"
 
 [display]
 
