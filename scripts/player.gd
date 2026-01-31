@@ -7,7 +7,7 @@ var hp = 10
 
 
 @onready var player_sprite: AnimatedSprite2D = $Future
-@onready var item_sprite: Sprite2D = $PlayerSprite/ItemSprite
+@onready var item_sprite: Sprite2D = $Future/ItemSprite
 
 const SPEED = 100.0
 const JUMP_VELOCITY = -200.0
