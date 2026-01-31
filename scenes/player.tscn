@@ -194,8 +194,8 @@ animations = [{
 height = 32.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qlg0r"]
-radius = 43.0
-height = 88.0
+radius = 11.800171
+height = 36.08392
 
 [sub_resource type="Animation" id="Animation_oprun"]
 length = 0.001
@@ -286,6 +286,14 @@ collision_mask = 8
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_qlg0r")
 
+[node name="KillzoneDetector" type="Area2D" parent="."]
+scale = Vector2(0.8474453, 0.8868216)
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillzoneDetector"]
+shape = SubResource("CapsuleShape2D_qlg0r")
+
 [node name="MaskEffectBubble" parent="." instance=ExtResource("5_qlg0r")]
 visible = false
 scale = Vector2(4, 4.1223006)
@@ -306,4 +314,10 @@ wait_time = 0.5
 [connection signal="area_exited" from="InteractionZone" to="." method="_on_interaction_zone_area_exited"]
 [connection signal="body_entered" from="InteractionZone" to="." method="_on_interaction_zone_body_entered"]
 [connection signal="body_exited" from="InteractionZone" to="." method="_on_interaction_zone_body_exited"]
+[connection signal="area_entered" from="KillzoneDetector" to="." method="_on_killzone_detector_area_entered"]
+[connection signal="area_entered" from="KillzoneDetector" to="." method="_on_interaction_zone_area_entered"]
+[connection signal="area_exited" from="KillzoneDetector" to="." method="_on_interaction_zone_area_exited"]
+[connection signal="body_entered" from="KillzoneDetector" to="." method="_on_killzone_detector_body_entered"]
+[connection signal="body_entered" from="KillzoneDetector" to="." method="_on_interaction_zone_body_entered"]
+[connection signal="body_exited" from="KillzoneDetector" to="." method="_on_interaction_zone_body_exited"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]
