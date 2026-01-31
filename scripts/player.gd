@@ -12,9 +12,11 @@ var hp = 10
 
 @export var SPEED = 100.0
 @export var JUMP_VELOCITY = -200.0
-@export var JUMP_DETECTION_THRESHOLD = 50
 @export var CLIMB_SPEED = 75
 const ITEM_SHIFT = 7
+
+const CAMERA_SHIFT_ACCELERATION = 1
+const CAMERA_MAX_SHIFT = 100
 
 var can_climb := false
 var is_climbing := false

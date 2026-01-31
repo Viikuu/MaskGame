@@ -59,6 +59,7 @@ collision_layer = 12
 shape = SubResource("RectangleShape2D_wy8tx")
 
 [node name="LeverHandle" type="Sprite2D" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_reeyv")
 position = Vector2(0, 7)
 rotation = -1.0471976

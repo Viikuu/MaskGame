@@ -64,7 +64,6 @@ size = Vector2(138, 128.59352)
 [node name="Main" type="Node"]
 
 [node name="Killzone" parent="." instance=ExtResource("1_h2yge")]
-collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
 position = Vector2(352, 419)
@@ -72,10 +71,6 @@ shape = SubResource("RectangleShape2D_1bvp3")
 
 [node name="Player" parent="." instance=ExtResource("1_ig7tw")]
 position = Vector2(491, 310)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(2, 2)
-position_smoothing_enabled = true
 
 [node name="WorldLimiterLower" type="StaticBody2D" parent="."]
 position = Vector2(492, 472)
