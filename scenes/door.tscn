@@ -51,6 +51,7 @@ animations = [{
 size = Vector2(8, 48)
 
 [node name="Door" type="Node2D"]
+z_index = -1
 script = ExtResource("1_83dcw")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
@@ -66,4 +67,4 @@ position = Vector2(8, 0)
 shape = SubResource("RectangleShape2D_uvdjg")
 
 [node name="Lock" parent="." instance=ExtResource("2_83dcw")]
-position = Vector2(14, 12)
+position = Vector2(8, 12)
