@@ -5,13 +5,25 @@ class_name Player
 @export var max_hp = 10
 var hp = 10
 
+
 @onready var player_sprite: AnimatedSprite2D = $Future
+@onready var item_sprite: Sprite2D = $PlayerSprite/ItemSprite
 
 const SPEED = 100.0
 const JUMP_VELOCITY = -200.0
-const JUMP_DETECTION_THRESHOLD = 50
+const ITEM_SHIFT = 7
+
 
 var nearby_interactions: Array[Interactable] = []
+
+func _ready() -> void:
+	InventoryManager.item_changed.connect(onItemChange)
+
+func onItemChange(new_item: Item):
+	if new_item != null:
+		item_sprite.texture = new_item.in_hand_texture
+	else:
+		item_sprite.texture = null
 
 func _physics_process(delta: float) -> void:
 	_handle_movement(delta)
@@ -34,9 +46,12 @@ func _handle_movement(delta: float):
 	var direction := Input.get_axis("move_left", "move_right")
 	if direction:
 		velocity.x = direction * SPEED
-		player_sprite.flip_h = velocity.x <= 0
+		var isWalkingLeft: bool = velocity.x <= 0
+		player_sprite.flip_h = isWalkingLeft
+		item_sprite.flip_h = !isWalkingLeft
+		item_sprite.position = Vector2(-ITEM_SHIFT, 0) if isWalkingLeft else Vector2(ITEM_SHIFT, 0)
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, SPEED)	
 
 
 	move_and_slide()

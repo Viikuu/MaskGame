@@ -207,6 +207,10 @@ scale = Vector2(0.9918935, 1)
 sprite_frames = SubResource("SpriteFrames_sh265")
 animation = &"walk_2"
 
+[node name="ItemSprite" type="Sprite2D" parent="PlayerSprite"]
+scale = Vector2(1.0081728, 0.99999994)
+offset = Vector2(0, 5)
+
 [node name="WorldCollisions" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_dw050")
 
