@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bp0hsxbfm4fv4"
-path="res://.godot/imported/Dżoszuła_Teraz.png-83f2451575c3a5208b1feae2dfe68215.ctex"
+uid="uid://dtvjwaocg3r4q"
+path="res://.godot/imported/Zły_Czarodziej_Rączka.png-1d15c5fd22d878d448e05a2e247f4a8b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art_me/Dżoszuła_Teraz.png"
-dest_files=["res://.godot/imported/Dżoszuła_Teraz.png-83f2451575c3a5208b1feae2dfe68215.ctex"]
+source_file="res://art_me/Character/Zły_Czarodziej_Rączka.png"
+dest_files=["res://.godot/imported/Zły_Czarodziej_Rączka.png-1d15c5fd22d878d448e05a2e247f4a8b.ctex"]
 
 [params]
 

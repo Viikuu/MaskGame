@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clwb3ly3n1jwb"
-path="res://.godot/imported/Dżoszuła_Przeszłość.png-ae2ead9a428271c15ce5aa9758599729.ctex"
+uid="uid://b7eh641k4vim8"
+path="res://.godot/imported/Dobry_Czarodziej_Śmierć.png-9b2440bfdf7d9512f99193790173f1a4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art_me/Dżoszuła_Przeszłość.png"
-dest_files=["res://.godot/imported/Dżoszuła_Przeszłość.png-ae2ead9a428271c15ce5aa9758599729.ctex"]
+source_file="res://art_me/Character/Dobry_Czarodziej_Śmierć.png"
+dest_files=["res://.godot/imported/Dobry_Czarodziej_Śmierć.png-9b2440bfdf7d9512f99193790173f1a4.ctex"]
 
 [params]
 

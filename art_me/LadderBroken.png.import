@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtvjwaocg3r4q"
-path="res://.godot/imported/Zły_Czarodziej_Rączka.png-ffec27323842df79a5117b62ebc71caf.ctex"
+uid="uid://bc3qd6a3av8iv"
+path="res://.godot/imported/LadderBroken.png-364cf30813864bd7570d3e7cadf38da5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art_me/Zły_Czarodziej_Rączka.png"
-dest_files=["res://.godot/imported/Zły_Czarodziej_Rączka.png-ffec27323842df79a5117b62ebc71caf.ctex"]
+source_file="res://art_me/LadderBroken.png"
+dest_files=["res://.godot/imported/LadderBroken.png-364cf30813864bd7570d3e7cadf38da5.ctex"]
 
 [params]
 

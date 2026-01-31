@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c166n1lyxdge2"
-path="res://.godot/imported/Dżoszuła.png-f5b8a91107755df872f4de77efa9ebdf.ctex"
+uid="uid://decujakpvfv0p"
+path="res://.godot/imported/Ladder.png-49627fc04d1ffc107146532a055dbe57.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art_me/Dżoszuła.png"
-dest_files=["res://.godot/imported/Dżoszuła.png-f5b8a91107755df872f4de77efa9ebdf.ctex"]
+source_file="res://art_me/Ladder.png"
+dest_files=["res://.godot/imported/Ladder.png-49627fc04d1ffc107146532a055dbe57.ctex"]
 
 [params]
 

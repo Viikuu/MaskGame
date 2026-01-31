@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjm5otcq8ym2f"
-path="res://.godot/imported/enemyFlyingAlt_2.png-31dc7310eda6e1b721224f3cd932c076.ctex"
+uid="uid://r71r687c3w0h"
+path="res://.godot/imported/Zły_Czarodziej.png-7dd0086287ba3a88df1bb206851198e8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/enemyFlyingAlt_2.png"
-dest_files=["res://.godot/imported/enemyFlyingAlt_2.png-31dc7310eda6e1b721224f3cd932c076.ctex"]
+source_file="res://art_me/Character/Zły_Czarodziej.png"
+dest_files=["res://.godot/imported/Zły_Czarodziej.png-7dd0086287ba3a88df1bb206851198e8.ctex"]
 
 [params]
 

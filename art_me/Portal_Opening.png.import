@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drbv8f10i06p1"
-path="res://.godot/imported/Dobry_Czarodziej.png-e76a6b83ba27380a3ef721f01fe74bf0.ctex"
+uid="uid://c8kcsqj8kf8h"
+path="res://.godot/imported/Portal_Opening.png-18ab34b55e5d1e5197445226f19b2186.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art_me/Dobry_Czarodziej.png"
-dest_files=["res://.godot/imported/Dobry_Czarodziej.png-e76a6b83ba27380a3ef721f01fe74bf0.ctex"]
+source_file="res://art_me/Portal_Opening.png"
+dest_files=["res://.godot/imported/Portal_Opening.png-18ab34b55e5d1e5197445226f19b2186.ctex"]
 
 [params]
 
