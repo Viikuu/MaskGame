@@ -2,20 +2,19 @@
 
 [ext_resource type="PackedScene" uid="uid://b3qvopux5mj5d" path="res://scenes/interactable.tscn" id="1_fttkb"]
 [ext_resource type="Script" uid="uid://cnvlgb4temub6" path="res://scripts/key.gd" id="1_wy8tx"]
-[ext_resource type="Texture2D" uid="uid://58snakp02h6f" path="res://icon.svg" id="2_wy8tx"]
+[ext_resource type="Texture2D" uid="uid://bd3memkss6x4m" path="res://art_me/Key.png" id="3_wy8tx"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_brs3p"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wy8tx"]
 
 [node name="Key" type="Node2D"]
 script = ExtResource("1_wy8tx")
 
 [node name="Interactable" parent="." instance=ExtResource("1_fttkb")]
+collision_layer = 12
 only_once = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
-shape = SubResource("CapsuleShape2D_brs3p")
+[node name="InteractionAndMaskZone" type="CollisionShape2D" parent="Interactable"]
+shape = SubResource("RectangleShape2D_wy8tx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0.9529412, 0.27058825, 1)
-scale = Vector2(0.08203125, 0.125)
-texture = ExtResource("2_wy8tx")
+texture = ExtResource("3_wy8tx")

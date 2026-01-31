@@ -5,6 +5,7 @@ class_name Player
 @export var max_hp = 10
 var hp = 10
 
+@onready var player_sprite: AnimatedSprite2D = $PlayerSprite
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -29,23 +30,26 @@ func _handle_movement(delta: float):
 	var direction := Input.get_axis("move_left", "move_right")
 	if direction:
 		velocity.x = direction * SPEED
+		player_sprite.flip_h = velocity.x <= 0
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+
 
 	move_and_slide()
 	
 # Interactions
 func _handle_interactions_input():
-	if Input.is_action_just_pressed("interact"):
+	#if Input.is_action_just_pressed("interact"):
 		_try_interact()
-
+#
 func _try_interact():
 	if not nearby_interactions:
 		return
 	var interaction = nearby_interactions.get(0)
-	interaction.interact()
-	if interaction.only_once:
-		nearby_interactions.erase(interaction)
+	if interaction.can_interact():
+		interaction.interact()
+		if interaction.only_once:
+			nearby_interactions.erase(interaction)
 	
 
 func _on_interaction_zone_area_entered(area: Area2D) -> void:

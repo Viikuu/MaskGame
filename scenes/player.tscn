@@ -1,30 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://bt3loh5cols1i"]
+[gd_scene load_steps=7 format=3 uid="uid://bt3loh5cols1i"]
 
-[ext_resource type="Texture2D" uid="uid://cmsaqga55x304" path="res://art/playerGrey_up1.png" id="1_hqtel"]
 [ext_resource type="Script" uid="uid://dckrhc5heh0nw" path="res://scripts/player.gd" id="1_tuyoq"]
-[ext_resource type="Texture2D" uid="uid://csjvcopy22twi" path="res://art/playerGrey_up2.png" id="2_sweqy"]
-[ext_resource type="Texture2D" uid="uid://cjhfisaydcnnd" path="res://art/playerGrey_walk1.png" id="3_2hs0m"]
-[ext_resource type="Texture2D" uid="uid://s4jg0tkkt05b" path="res://art/playerGrey_walk2.png" id="4_1jxqw"]
+[ext_resource type="Texture2D" uid="uid://c166n1lyxdge2" path="res://art_me/Dżoszuła.png" id="2_g2els"]
+[ext_resource type="PackedScene" uid="uid://b8os61ysb2ysd" path="res://scenes/mask_effect_bubble.tscn" id="5_qlg0r"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_sh265"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_hqtel")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_sweqy")
-}],
-"loop": true,
-"name": &"up",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_2hs0m")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_1jxqw")
+"texture": ExtResource("2_g2els")
 }],
 "loop": true,
 "name": &"walk",
@@ -32,8 +16,7 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dw050"]
-radius = 27.0
-height = 68.0
+height = 32.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qlg0r"]
 radius = 43.0
@@ -43,22 +26,26 @@ height = 88.0
 collision_layer = 2
 script = ExtResource("1_tuyoq")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
+[node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.9918935, 1)
 sprite_frames = SubResource("SpriteFrames_sh265")
-animation = &"up"
+animation = &"walk"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="WorldCollisions" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_dw050")
 
 [node name="InteractionZone" type="Area2D" parent="."]
-scale = Vector2(2.0399995, 1.9199998)
+scale = Vector2(0.8474453, 0.8868216)
 collision_layer = 0
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionZone"]
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_qlg0r")
+
+[node name="MaskEffectBubble" parent="." instance=ExtResource("5_qlg0r")]
+visible = false
+scale = Vector2(4, 4.1223006)
 
 [connection signal="area_entered" from="InteractionZone" to="." method="_on_interaction_zone_area_entered"]
 [connection signal="area_exited" from="InteractionZone" to="." method="_on_interaction_zone_area_exited"]
