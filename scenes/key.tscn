@@ -10,9 +10,10 @@
 script = ExtResource("1_wy8tx")
 
 [node name="Interactable" parent="." instance=ExtResource("1_fttkb")]
+collision_layer = 12
 only_once = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
+[node name="InteractionAndMaskZone" type="CollisionShape2D" parent="Interactable"]
 shape = SubResource("RectangleShape2D_wy8tx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

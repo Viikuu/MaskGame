@@ -39,16 +39,17 @@ func _handle_movement(delta: float):
 	
 # Interactions
 func _handle_interactions_input():
-	if Input.is_action_just_pressed("interact"):
+	#if Input.is_action_just_pressed("interact"):
 		_try_interact()
-
+#
 func _try_interact():
 	if not nearby_interactions:
 		return
 	var interaction = nearby_interactions.get(0)
-	interaction.interact()
-	if interaction.only_once:
-		nearby_interactions.erase(interaction)
+	if interaction.can_interact():
+		interaction.interact()
+		if interaction.only_once:
+			nearby_interactions.erase(interaction)
 	
 
 func _on_interaction_zone_area_entered(area: Area2D) -> void:

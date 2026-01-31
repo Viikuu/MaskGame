@@ -131,4 +131,7 @@ scale = Vector2(1, 0.9953845)
 shape = SubResource("RectangleShape2D_jyhfs")
 
 [node name="Key" parent="." instance=ExtResource("5_w7hpy")]
-position = Vector2(691, 450)
+position = Vector2(414, 450)
+
+[node name="KeyInFuture" parent="." groups=["show_in_future"] instance=ExtResource("5_w7hpy")]
+position = Vector2(693, 449)
