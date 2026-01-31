@@ -1,5 +1,7 @@
 extends Node
 
+signal unlocked
+
 @onready var interactable: Interactable = $Interactable
 
 func _ready() -> void:
@@ -11,3 +13,4 @@ func can_interact():
 func _on_lock_interacted():
 	print("lock has been unlocked")
 	InventoryManager.use_item()
+	unlocked.emit()

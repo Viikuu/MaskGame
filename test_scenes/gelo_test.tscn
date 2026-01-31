@@ -4,9 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://bt3loh5cols1i" path="res://scenes/player.tscn" id="2_eucnt"]
 [ext_resource type="Texture2D" uid="uid://cncxt2uayoltn" path="res://tileset/placeholder.png" id="3_igvhm"]
 [ext_resource type="PackedScene" uid="uid://ckmbprht7fa8w" path="res://scenes/key.tscn" id="5_w7hpy"]
-[ext_resource type="PackedScene" uid="uid://d16lob5v8afp2" path="res://scenes/lock.tscn" id="6_qxm24"]
 [ext_resource type="PackedScene" uid="uid://6haeqhvric21" path="res://scenes/lever_base.tscn" id="7_kb7ad"]
 [ext_resource type="PackedScene" uid="uid://c5hja1h2kfs8q" path="res://scenes/lever_handle.tscn" id="7_kpe0j"]
+[ext_resource type="PackedScene" uid="uid://dacxjmtgscwg" path="res://scenes/door.tscn" id="8_kb7ad"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(98, 90)
@@ -70,6 +70,7 @@ position = Vector2(352, 419)
 shape = SubResource("RectangleShape2D_1bvp3")
 
 [node name="Player" parent="." instance=ExtResource("2_eucnt")]
+z_index = 1
 position = Vector2(491, 310)
 scale = Vector2(1.0299578, 1.0027562)
 
@@ -91,11 +92,11 @@ tile_set = SubResource("TileSet_h2yge")
 [node name="KeyInFuture" parent="." groups=["show_in_future"] instance=ExtResource("5_w7hpy")]
 position = Vector2(693, 449)
 
-[node name="Lock" parent="." instance=ExtResource("6_qxm24")]
-position = Vector2(425, 449)
-
 [node name="LeverHandle" parent="." instance=ExtResource("7_kpe0j")]
 position = Vector2(266, 454)
 
 [node name="LeverBase" parent="." instance=ExtResource("7_kb7ad")]
 position = Vector2(107, 447)
+
+[node name="Door" parent="." instance=ExtResource("8_kb7ad")]
+position = Vector2(366, 438)

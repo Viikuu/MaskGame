@@ -8,7 +8,7 @@ var hp = 10
 @onready var player_sprite: AnimatedSprite2D = $PlayerSprite
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const JUMP_VELOCITY = -100.0
 
 var nearby_interactions: Array[Interactable] = []
 
