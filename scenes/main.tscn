@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=4 uid="uid://dhva5cgnll5tl"]
+[gd_scene load_steps=12 format=4 uid="uid://dhva5cgnll5tl"]
 
 [ext_resource type="PackedScene" uid="uid://c2v13tvie2ist" path="res://scenes/killzone.tscn" id="1_h2yge"]
 [ext_resource type="PackedScene" uid="uid://bt3loh5cols1i" path="res://scenes/player.tscn" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://cncxt2uayoltn" path="res://tileset/placeholder.png" id="2_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://58snakp02h6f" path="res://icon.svg" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://d1mjsf7ckcytx" path="res://scenes/ui/pause_menu.tscn" id="5_tefeu"]
+[ext_resource type="PackedScene" uid="uid://dten0kswytnfd" path="res://scenes/ui/player_ui.tscn" id="6_o6xl0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(98, 90)
@@ -127,3 +129,9 @@ texture = ExtResource("4_jyhfs")
 position = Vector2(1, -1)
 scale = Vector2(1, 0.9953845)
 shape = SubResource("RectangleShape2D_jyhfs")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PlayerUI" parent="CanvasLayer" instance=ExtResource("6_o6xl0")]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("5_tefeu")]
