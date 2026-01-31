@@ -1,0 +1,38 @@
+[gd_scene load_steps=9 format=3 uid="uid://q7kj83nracch"]
+
+[ext_resource type="Script" uid="uid://d1uej3aq724q4" path="res://scripts/pickups/future_mask_pickup.gd" id="1_t2o22"]
+[ext_resource type="PackedScene" uid="uid://b3qvopux5mj5d" path="res://scenes/interactable.tscn" id="2_6a3c7"]
+[ext_resource type="PackedScene" uid="uid://1wwls48q7rbf" path="res://scenes/bouncy_sprite.tscn" id="3_r7jqu"]
+[ext_resource type="Shader" uid="uid://crifcwkthp2wq" path="res://shaders/ui_pick_shader.gdshader" id="4_2xc88"]
+[ext_resource type="Texture2D" uid="uid://c3ecdn8dlo0tn" path="res://art_me/Maska_Przyszłości.png" id="5_t2o22"]
+[ext_resource type="Texture2D" uid="uid://dugry3xw3vqpr" path="res://art_me/Pedestal.png" id="6_61ner"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wy8tx"]
+size = Vector2(24, 26)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b4qnb"]
+shader = ExtResource("4_2xc88")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_thickness = 1.0
+
+[node name="FutureMaskPickup" type="Node2D"]
+script = ExtResource("1_t2o22")
+
+[node name="Interactable" parent="." instance=ExtResource("2_6a3c7")]
+collision_layer = 12
+only_once = true
+
+[node name="InteractionAndMaskZone" type="CollisionShape2D" parent="Interactable"]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_wy8tx")
+
+[node name="BouncySprite" parent="." instance=ExtResource("3_r7jqu")]
+
+[node name="Mask" type="Sprite2D" parent="BouncySprite"]
+material = SubResource("ShaderMaterial_b4qnb")
+position = Vector2(0, -10)
+texture = ExtResource("5_t2o22")
+
+[node name="Pedestal" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_b4qnb")
+texture = ExtResource("6_61ner")

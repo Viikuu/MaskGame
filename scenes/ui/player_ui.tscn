@@ -43,8 +43,6 @@ offset_bottom = 70.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_2sf84")
 script = ExtResource("1_s4ogp")
-hasPastMask = true
-hasFutureMask = true
 
 [node name="PastMask" type="TextureRect" parent="MaskUI"]
 material = SubResource("ShaderMaterial_fatqr")
