@@ -19,7 +19,7 @@ func _on_area_exited(area: Area2D) -> void:
 		
 func _evaluate_body_enter(body: Node2D):
 	if body.is_in_group("show_in_future") and MaskManager.current_mask == MaskManager.MASK.FUTURE:
-		#if body is Interactable:
+		if body is Interactable:
 			body.get_parent().show()
 		else:
 			body.show()
