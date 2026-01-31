@@ -14,16 +14,17 @@ func _draw() -> void:
 
 func _on_ready() -> void:
 	MaskManager.mask_changed.connect(onMaskChanged)
+	(no_mask.material as ShaderMaterial).set_shader_parameter("outline_color", Color.LIGHT_GRAY)
 	
 
 func onMaskChanged(previousMask: MaskManager.MASK, currentMask: MaskManager.MASK):
 	match currentMask:
 		0:
-			(past_mask.material as ShaderMaterial).set_shader_parameter("outline_color", Color.WHITE)
+			(past_mask.material as ShaderMaterial).set_shader_parameter("outline_color", Color.LIGHT_GRAY)
 		1:
-			(no_mask.material as ShaderMaterial).set_shader_parameter("outline_color", Color.WHITE)
+			(no_mask.material as ShaderMaterial).set_shader_parameter("outline_color", Color.LIGHT_GRAY)
 		2:
-			(future_mask.material as ShaderMaterial).set_shader_parameter("outline_color", Color.WHITE)
+			(future_mask.material as ShaderMaterial).set_shader_parameter("outline_color", Color.LIGHT_GRAY)
 	
 	if currentMask != previousMask:
 		match previousMask:

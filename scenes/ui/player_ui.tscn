@@ -1,25 +1,27 @@
-[gd_scene load_steps=8 format=3 uid="uid://dten0kswytnfd"]
+[gd_scene load_steps=10 format=3 uid="uid://dten0kswytnfd"]
 
 [ext_resource type="Script" uid="uid://114hbi20nimm" path="res://scripts/ui/mask_ui.gd" id="1_s4ogp"]
 [ext_resource type="Shader" uid="uid://crifcwkthp2wq" path="res://shaders/ui_pick_shader.gdshader" id="2_2sf84"]
-[ext_resource type="Texture2D" uid="uid://58snakp02h6f" path="res://icon.svg" id="3_jg20v"]
+[ext_resource type="Texture2D" uid="uid://d33ngorjcga4e" path="res://art_me/Maska_Przsszłości.png" id="3_1afs1"]
+[ext_resource type="Texture2D" uid="uid://d20mij3ndw6q7" path="res://art_me/Maska_Teraz.png" id="4_g7v3g"]
+[ext_resource type="Texture2D" uid="uid://c3ecdn8dlo0tn" path="res://art_me/Maska_Przyszłości.png" id="5_rtpfr"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2sf84"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fatqr"]
 shader = ExtResource("2_2sf84")
 shader_parameter/outline_color = Color(1, 1, 1, 0)
-shader_parameter/outline_thickness = 5.0
+shader_parameter/outline_thickness = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1afs1"]
 shader = ExtResource("2_2sf84")
-shader_parameter/outline_color = Color(1, 1, 1, 1)
-shader_parameter/outline_thickness = 5.0
+shader_parameter/outline_color = Color(1, 1, 1, 0)
+shader_parameter/outline_thickness = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g7v3g"]
 shader = ExtResource("2_2sf84")
 shader_parameter/outline_color = Color(1, 1, 1, 0)
-shader_parameter/outline_thickness = 5.0
+shader_parameter/outline_thickness = 1.0
 
 [node name="PlayerUI" type="Control"]
 layout_mode = 3
@@ -34,9 +36,9 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -89.25
+offset_left = -70.625
 offset_top = 20.0
-offset_right = 89.25
+offset_right = 70.625
 offset_bottom = 70.0
 grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_2sf84")
@@ -54,7 +56,7 @@ offset_top = -20.0
 offset_right = 40.0
 offset_bottom = 20.0
 grow_vertical = 2
-texture = ExtResource("3_jg20v")
+texture = ExtResource("3_1afs1")
 expand_mode = 1
 
 [node name="NoMask" type="TextureRect" parent="MaskUI"]
@@ -71,7 +73,7 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_jg20v")
+texture = ExtResource("4_g7v3g")
 expand_mode = 1
 
 [node name="FutureMask" type="TextureRect" parent="MaskUI"]
@@ -87,7 +89,7 @@ offset_top = -20.0
 offset_bottom = 20.0
 grow_horizontal = 0
 grow_vertical = 2
-texture = ExtResource("3_jg20v")
+texture = ExtResource("5_rtpfr")
 expand_mode = 1
 
 [connection signal="ready" from="MaskUI" to="MaskUI" method="_on_ready"]
