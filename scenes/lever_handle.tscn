@@ -1,11 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://c5hja1h2kfs8q"]
+[gd_scene load_steps=8 format=3 uid="uid://c5hja1h2kfs8q"]
 
 [ext_resource type="Script" uid="uid://bqeob4a7dsb5m" path="res://scripts/lever_handle.gd" id="1_i6eep"]
 [ext_resource type="PackedScene" uid="uid://b3qvopux5mj5d" path="res://scenes/interactable.tscn" id="2_ew31p"]
 [ext_resource type="Texture2D" uid="uid://cfrd50au3c2cd" path="res://art_me/LeverHandle.png" id="3_i6eep"]
+[ext_resource type="PackedScene" uid="uid://1wwls48q7rbf" path="res://scenes/bouncy_sprite.tscn" id="3_ymg2w"]
+[ext_resource type="Shader" uid="uid://crifcwkthp2wq" path="res://shaders/ui_pick_shader.gdshader" id="4_o8jyn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wy8tx"]
 size = Vector2(29, 6)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rki1w"]
+shader = ExtResource("4_o8jyn")
+shader_parameter/outline_color = Color(0, 0, 0, 1)
+shader_parameter/outline_thickness = 1.0
 
 [node name="LeverHandle" type="Node2D"]
 script = ExtResource("1_i6eep")
@@ -18,6 +25,9 @@ only_once = true
 position = Vector2(1.5, 0)
 shape = SubResource("RectangleShape2D_wy8tx")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="BouncySprite" parent="." instance=ExtResource("3_ymg2w")]
+
+[node name="Sprite2D" type="Sprite2D" parent="BouncySprite"]
+material = SubResource("ShaderMaterial_rki1w")
 rotation = -1.5707964
 texture = ExtResource("3_i6eep")
