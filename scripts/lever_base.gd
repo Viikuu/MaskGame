@@ -1,4 +1,7 @@
 extends Node
+class_name LeverBase
+
+signal lever_opened
 
 @onready var interactable: Interactable = $Interactable
 
@@ -29,3 +32,4 @@ func _switch_to_closed():
 func _switch_to_open():
 	current_state = LeverState.OPEN
 	$LeverHandle/LeverHandleAnimation.play("open")
+	lever_opened.emit()
