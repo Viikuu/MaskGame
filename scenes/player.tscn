@@ -7,13 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://cyso1s4jaciq6" path="res://art_me/Character/Dżoszuła_Fall_Przyszłość.png" id="4_oprun"]
 [ext_resource type="Texture2D" uid="uid://b6obm4g4j6ylu" path="res://art_me/Character/Dżoszuła_Jump_Teraz.png" id="4_smehm"]
 [ext_resource type="Texture2D" uid="uid://dj045qu6vrsvd" path="res://art_me/Character/Dżoszuła_Idle_Przeszłość.png" id="5_a8ls1"]
-[ext_resource type="PackedScene" uid="uid://b8os61ysb2ysd" path="res://scenes/mask_effect_bubble.tscn" id="5_qlg0r"]
 [ext_resource type="Texture2D" uid="uid://cxl3hhsrcpw5v" path="res://art_me/Character/Dżoszuła_Walk_Teraz.png" id="5_ur7pv"]
 [ext_resource type="Texture2D" uid="uid://c5j16ddi3byx8" path="res://art_me/Character/Dżoszuła_Idle_Przyszłość.png" id="7_qfm1y"]
 [ext_resource type="Texture2D" uid="uid://bbjsijyr7ok8e" path="res://art_me/Character/Dżoszuła_Jump_Przeszłość.png" id="8_fulsm"]
 [ext_resource type="Texture2D" uid="uid://divduvioglie2" path="res://art_me/Character/Dżoszuła_Jump_Przyszłość.png" id="10_4r5pv"]
 [ext_resource type="Texture2D" uid="uid://bhadatp2c2l17" path="res://art_me/Character/Dżoszuła_Walk_Przeszłość.png" id="11_60mlk"]
 [ext_resource type="Texture2D" uid="uid://c3r61vrl0ppx6" path="res://art_me/Character/Dżoszuła_Walk_Przyszłość.png" id="13_i4ail"]
+[ext_resource type="PackedScene" uid="uid://ceo2qxlpfcqer" path="res://scenes/reveal_zone.tscn" id="14_f1ej7"]
 [ext_resource type="PackedScene" uid="uid://d1isr44cun43a" path="res://scenes/camera_rig.tscn" id="15_oprun"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a38lo"]
@@ -297,9 +297,9 @@ collision_mask = 16
 position = Vector2(0, 2.255245)
 shape = SubResource("CapsuleShape2D_qlg0r")
 
-[node name="MaskEffectBubble" parent="." instance=ExtResource("5_qlg0r")]
-visible = false
-scale = Vector2(4, 4.1223006)
+[node name="RevealZone" parent="." instance=ExtResource("14_f1ej7")]
+light_mask = 4
+visibility_layer = 4
 
 [node name="DeathAnimationPlayer" type="AnimationPlayer" parent="."]
 process_mode = 3

@@ -7,6 +7,8 @@ var hp = 10
 
 @onready var death_timer: Timer = $DeathTimer
 @onready var death_animation_player: AnimationPlayer = $DeathAnimationPlayer
+@onready var reveal_zone: RevealZone = $RevealZone
+
 @onready var player_sprite: AnimatedSprite2D = $Future
 @onready var item_sprite: Sprite2D = $Future/ItemSprite
 
@@ -35,8 +37,9 @@ func onItemChange(new_item: Item):
 func _physics_process(delta: float) -> void:
 	_handle_movement(delta)
 	_handle_interactions_input()
-	
-func _process(delta: float) -> void:
+	reveal_zone.update_if_needed(global_position)
+
+func _process(_delta: float) -> void:
 	_play_movemement_animations()
 	
 func _handle_movement(delta: float):
@@ -50,7 +53,6 @@ func _handle_movement(delta: float):
 		
 	var input_y := Input.get_axis("move_up", "move_down")
 	# Start/stop climbing when inside ladder area
-	#print(input_y, can_climb, is_climbing)
 	if can_climb and abs(input_y) > 0.0:
 		is_climbing = true
 	elif not can_climb:

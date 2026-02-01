@@ -1,6 +1,8 @@
 [gd_scene load_steps=15 format=4 uid="uid://b8oq4xligphkr"]
 
 [ext_resource type="PackedScene" uid="uid://bt3loh5cols1i" path="res://scenes/player.tscn" id="2_fep8b"]
+[ext_resource type="PackedScene" uid="uid://dten0kswytnfd" path="res://scenes/ui/player_ui.tscn" id="3_i4xba"]
+[ext_resource type="Script" uid="uid://dsl5rjqhl5mjn" path="res://scripts/physics_layer_fiddler.gd" id="3_iypu5"]
 [ext_resource type="Texture2D" uid="uid://ddtwrmhncvcdj" path="res://tileset/Tilesheetv1.png" id="4_iypu5"]
 [ext_resource type="PackedScene" uid="uid://dten0kswytnfd" path="res://scenes/ui/player_ui.tscn" id="5_1gvg4"]
 [ext_resource type="Texture2D" uid="uid://ewboinbry8jw" path="res://art_me/Character/Door.png" id="5_t84f4"]
@@ -366,6 +368,8 @@ sources/0 = SubResource("TileSetAtlasSource_iypu5")
 
 [node name="Player" parent="." instance=ExtResource("2_fep8b")]
 position = Vector2(1607, -146)
+z_index = 4
+
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(4, 4)
@@ -378,7 +382,6 @@ position = Vector2(492, 761)
 shape = SubResource("WorldBoundaryShape2D_ig7tw")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="PlayerUI" parent="CanvasLayer" instance=ExtResource("5_1gvg4")]
 
