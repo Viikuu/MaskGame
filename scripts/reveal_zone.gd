@@ -3,8 +3,29 @@ class_name RevealZone
 
 enum Mode { PAST, NOW, FUTURE }
 
+@export var show_indicator_in_now: bool = false
+
+@export var past_tint: Color = Color(0.35, 0.75, 1.0, 0.45)   # bluish, semi transparent
+@export var future_tint: Color = Color(1.0, 0.45, 0.9, 0.45)  # magenta-ish, semi transparent
+@export var now_tint: Color = Color(1, 1, 1, 0.0)             # fully transparent by default
+
+@export var indicator_anim: StringName = &"default"
+@export var indicator_playback_speed: float = 1.0
+
+@export var fade_in_time: float = 0.18
+@export var fade_out_time: float = 0.18
+@export var indicator_min_alpha: float = 0.0  # usually 0
+@export var indicator_max_alpha: float = 1.0  # we multiply your tint alpha by this
+
+var _indicator_tween: Tween
+
+@onready var _indicator: AnimatedSprite2D = $"AnimatedSprite2D"
+
 @export var mode: Mode = Mode.NOW
-@export var active: bool = true
+@export var active: bool = true:
+	set(value):
+		active = value
+		_apply_indicator_for_mode()
 
 # Optional cap so you don't scan too much by mistake (0 = no cap)
 @export var max_scan_radius_tiles: int = 0
@@ -22,8 +43,60 @@ var _future_visibles: Array[TileMapLayer] = []
 var _revealed: Dictionary[String, Dictionary] = {}
 var _last_center_cell: Vector2i = Vector2i(999999, 999999)
 
+func _fade_indicator(should_show: bool, tint: Color) -> void:
+	if _indicator == null:
+		return
+
+	# Stop previous tween if any
+	if _indicator_tween and _indicator_tween.is_running():
+		_indicator_tween.kill()
+
+	# Ensure it's visible before fading in
+	if should_show:
+		_indicator.visible = true
+		_indicator.modulate = tint
+		_indicator.modulate.a = clamp(_indicator.modulate.a, 0.0, 1.0) * indicator_max_alpha
+
+		_indicator.play()
+		_indicator_tween = create_tween()
+		_indicator_tween.tween_property(
+			_indicator,
+			"modulate:a",
+			_indicator.modulate.a,  # target alpha = tint alpha
+			fade_in_time
+		).from(indicator_min_alpha)
+	else:
+		# Fade out to 0 then hide/stop
+		_indicator_tween = create_tween()
+		_indicator_tween.tween_property(_indicator, "modulate:a", indicator_min_alpha, fade_out_time)
+		_indicator_tween.tween_callback(func():
+			_indicator.stop()
+			_indicator.visible = false
+		)
+
+func _apply_indicator_for_mode() -> void:
+	if _indicator == null:
+		return
+
+	var should_show := active and (mode != Mode.NOW)
+
+	if not should_show:
+		_fade_indicator(false, _indicator.modulate)
+		return
+
+	match mode:
+		Mode.PAST:
+			_fade_indicator(true, past_tint)
+		Mode.FUTURE:
+			_fade_indicator(true, future_tint)
+		Mode.NOW:
+			_fade_indicator(false, now_tint)
+
+
+
 func _ready() -> void:
 	_collect_layers()
+	_apply_indicator_for_mode()
 	MaskManager.mask_changed.connect(set_mode)
 	if debug_logs:
 		print("future src:", _future_sources.size(), "future vis:", _future_visibles.size())
@@ -48,12 +121,15 @@ func _collect_sorted(group_name: String) -> Array[TileMapLayer]:
 	)
 	return arr
 
-func set_mode(old_mask: Mode, new_mode: Mode) -> void:
+func set_mode(_old_mask: Mode, new_mode: Mode) -> void:
 	if mode == new_mode:
 		return
 	clear_all()
 	mode = new_mode
 	_last_center_cell = Vector2i(999999, 999999)
+	
+	_apply_indicator_for_mode()
+	
 	if debug_logs:
 		print("RevealZone mode -> ", mode)
 

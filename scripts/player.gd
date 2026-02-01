@@ -35,7 +35,7 @@ func _physics_process(delta: float) -> void:
 	_handle_interactions_input()
 	reveal_zone.update_if_needed(global_position)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	_play_movemement_animations()
 	
 func _handle_movement(delta: float):
