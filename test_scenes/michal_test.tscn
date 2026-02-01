@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://0pex551gia3v"]
+[gd_scene load_steps=16 format=4 uid="uid://0pex551gia3v"]
 
 [ext_resource type="PackedScene" uid="uid://c2v13tvie2ist" path="res://scenes/killzone.tscn" id="1_xpegi"]
 [ext_resource type="PackedScene" uid="uid://bt3loh5cols1i" path="res://scenes/player.tscn" id="2_u77o4"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://dacxjmtgscwg" path="res://scenes/door.tscn" id="7_wi3un"]
 [ext_resource type="PackedScene" uid="uid://br4tcgxdecluh" path="res://scenes/bridge_left.tscn" id="8_6j6xa"]
 [ext_resource type="PackedScene" uid="uid://bm5ljdow8cbfk" path="res://scenes/bridge_right.tscn" id="9_6yw3n"]
+[ext_resource type="PackedScene" uid="uid://drtesvqp7c31e" path="res://scenes/checkpoint.tscn" id="10_pok2s"]
+[ext_resource type="PackedScene" uid="uid://d1mjsf7ckcytx" path="res://scenes/ui/pause_menu.tscn" id="10_u77o4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(98, 90)
@@ -106,3 +108,11 @@ position = Vector2(0, 464)
 
 [node name="Bridge2" parent="." instance=ExtResource("9_6yw3n")]
 position = Vector2(848, 464)
+
+[node name="Checkpoint" parent="." instance=ExtResource("10_pok2s")]
+position = Vector2(435, 443)
+is_start_checkpoint = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("10_u77o4")]
