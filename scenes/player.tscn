@@ -196,8 +196,8 @@ radius = 5.0
 height = 22.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qlg0r"]
-radius = 8.260119
-height = 29.318184
+radius = 5.9000854
+height = 33.828674
 
 [sub_resource type="Animation" id="Animation_oprun"]
 length = 0.001
