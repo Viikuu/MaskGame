@@ -18,6 +18,7 @@ script = ExtResource("1_40mgl")
 [node name="Interactable" parent="." instance=ExtResource("2_hpkde")]
 collision_layer = 12
 only_once = true
+text = "You need a key to unlock this"
 
 [node name="InteractionAndMaskZone" type="CollisionShape2D" parent="Interactable"]
 shape = SubResource("RectangleShape2D_wy8tx")
