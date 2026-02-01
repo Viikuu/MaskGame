@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://b8oq4xligphkr"]
+[gd_scene load_steps=37 format=4 uid="uid://b8oq4xligphkr"]
 
 [ext_resource type="PackedScene" uid="uid://bt3loh5cols1i" path="res://scenes/player.tscn" id="2_fep8b"]
 [ext_resource type="Texture2D" uid="uid://ddtwrmhncvcdj" path="res://tileset/Tilesheetv1.png" id="4_iypu5"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://cx8rnampobjwh" path="res://art_me/Ball_Animation.png" id="13_11hl5"]
 [ext_resource type="PackedScene" uid="uid://6haeqhvric21" path="res://scenes/lever_base.tscn" id="13_pv8nv"]
 [ext_resource type="PackedScene" uid="uid://bng1nagcfw78q" path="res://scenes/pickups/past_mask_pickup.tscn" id="14_pv8nv"]
+[ext_resource type="Script" uid="uid://ba02lnbpixuft" path="res://scripts/layer_and_bridge.gd" id="18_661xf"]
 [ext_resource type="Texture2D" uid="uid://drbv8f10i06p1" path="res://art_me/Character/Dobry_Czarodziej.png" id="19_y2tlm"]
 [ext_resource type="Texture2D" uid="uid://bc3qd6a3av8iv" path="res://art_me/LadderBroken.png" id="20_menjm"]
 
@@ -565,7 +566,7 @@ horizontal_alignment = 1
 
 [node name="Player" parent="." instance=ExtResource("2_fep8b")]
 z_index = 4
-position = Vector2(1911, -153)
+position = Vector2(2825, 235)
 
 [node name="WorldLimiterLower" type="StaticBody2D" parent="."]
 position = Vector2(492, 761)
@@ -1017,9 +1018,6 @@ texture = ExtResource("8_4l6wp")
 [node name="FutureMaskPickup" parent="Node" groups=["show_in_now_only"] instance=ExtResource("9_vi2w4")]
 position = Vector2(4138, 73)
 
-[node name="Bridge3" parent="Node" instance=ExtResource("12_hc1su")]
-position = Vector2(4735, 87)
-
 [node name="Ladder3" parent="Node" instance=ExtResource("7_fep8b")]
 position = Vector2(4569, 79)
 
@@ -1052,11 +1050,16 @@ position = Vector2(4039, 82)
 [node name="Checkpoint7" parent="Node" instance=ExtResource("11_7wig4")]
 position = Vector2(4647, 79)
 
-[node name="Bridge" parent="Node" instance=ExtResource("12_hc1su")]
-position = Vector2(2944, 287)
+[node name="LeverAndBridge" type="Node" parent="Node" node_paths=PackedStringArray("bridge", "lever")]
+script = ExtResource("18_661xf")
+bridge = NodePath("Bridge3")
+lever = NodePath("LeverBase2")
 
-[node name="LeverBase" parent="Node" instance=ExtResource("13_pv8nv")]
-position = Vector2(2911, 277)
+[node name="Bridge3" parent="Node/LeverAndBridge" instance=ExtResource("12_hc1su")]
+position = Vector2(4735, 87)
+
+[node name="LeverBase2" parent="Node/LeverAndBridge" instance=ExtResource("13_pv8nv")]
+position = Vector2(4706, 76)
 
 [node name="PastMaskPickup" parent="Node" instance=ExtResource("14_pv8nv")]
 position = Vector2(1873, -138)
@@ -1077,12 +1080,9 @@ position = Vector2(4386, -95)
 z_index = 4
 position = Vector2(4527, -192)
 
-[node name="LeverBase2" parent="Node" instance=ExtResource("13_pv8nv")]
-position = Vector2(4706, 76)
-
 [node name="LeverHandle" parent="Node" groups=["show_in_past"] instance=ExtResource("7_hc1su")]
 z_index = 6
-position = Vector2(4366, -76)
+position = Vector2(4507, 79)
 
 [node name="Area2D" type="Area2D" parent="Node" groups=["show_in_past"]]
 position = Vector2(4109, 74)
@@ -1168,6 +1168,17 @@ position = Vector2(5019, 69)
 sprite_frames = SubResource("SpriteFrames_0hc0g")
 autoplay = "default"
 frame_progress = 0.041262735
+
+[node name="FirstLeverAndBridge" type="Node" parent="Node" node_paths=PackedStringArray("bridge", "lever")]
+script = ExtResource("18_661xf")
+bridge = NodePath("Bridge")
+lever = NodePath("LeverBase")
+
+[node name="LeverBase" parent="Node/FirstLeverAndBridge" instance=ExtResource("13_pv8nv")]
+position = Vector2(2911, 277)
+
+[node name="Bridge" parent="Node/FirstLeverAndBridge" instance=ExtResource("12_hc1su")]
+position = Vector2(2944, 287)
 
 [node name="Ladder" parent="." instance=ExtResource("7_fep8b")]
 z_index = 6
