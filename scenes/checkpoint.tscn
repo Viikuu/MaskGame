@@ -131,14 +131,17 @@ frame_progress = 0.119936824
 collision_layer = 8
 collision_mask = 0
 script = ExtResource("3_c45tw")
+text = "MEOW"
 metadata/_custom_type_script = "uid://buno5pkjjq2c0"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
 shape = SubResource("CircleShape2D_vsimk")
 
 [node name="RespawnPoint" type="Node2D" parent="."]
-position = Vector2(21, 0)
+
+position = Vector2(23, -21)
 
 [node name="CatMeow" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_tl56q")
 volume_db = 1.0
+
