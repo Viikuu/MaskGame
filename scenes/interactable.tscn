@@ -7,5 +7,18 @@ collision_layer = 8
 collision_mask = 0
 script = ExtResource("1_56v82")
 
+[node name="InteractableText" type="Label" parent="."]
+z_index = 999
+offset_left = -63.0
+offset_top = -5.0
+offset_right = 256.99994
+offset_bottom = 18.0
+scale = Vector2(0.4, 0.4)
+size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "sample text"
+horizontal_alignment = 1
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

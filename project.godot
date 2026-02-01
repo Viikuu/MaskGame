@@ -39,6 +39,10 @@ show_in_now_only=""
 show_in_future=""
 show_in_past=""
 
+[gui]
+
+theme/custom_font="uid://rs86phj7khgs"
+
 [input]
 
 move_left={
