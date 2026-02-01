@@ -28,5 +28,5 @@ func _on_checkpoint_interacted():
 	cat_meow.play()
 	used = true
 	CheckpointManager.set_checkpoint(CheckpointManager.Checkpoint.new(
-		$RespawnPoint.globald_position
+		$RespawnPoint.global_position
 	))
