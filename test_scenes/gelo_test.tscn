@@ -87,6 +87,7 @@ tile_set = SubResource("TileSet_h2yge")
 position = Vector2(600, 454)
 
 [node name="KeyShowNow" parent="." groups=["show_in_now_only"] instance=ExtResource("5_w7hpy")]
+light_mask = 0
 position = Vector2(694, 454)
 
 [node name="LeverHandle" parent="." instance=ExtResource("7_kpe0j")]
