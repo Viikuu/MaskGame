@@ -5,6 +5,8 @@ class_name Player
 @export var max_hp = 10
 var hp = 10
 
+var coyote_timer = 0
+
 @onready var death_timer: Timer = $DeathTimer
 @onready var death_animation_player: AnimationPlayer = $DeathAnimationPlayer
 @onready var reveal_zone: RevealZone = $RevealZone
@@ -15,6 +17,8 @@ var hp = 10
 @export var SPEED = 100.0
 @export var JUMP_VELOCITY = -200.0
 @export var CLIMB_SPEED = 75
+@export var COYOTE_TIME = 0.1
+
 const ITEM_SHIFT = 7
 
 const CAMERA_SHIFT_ACCELERATION = 1
@@ -46,9 +50,14 @@ func _handle_movement(delta: float):
 	# Add the gravity.
 	if not is_on_floor() and not is_climbing:
 		velocity += get_gravity() * delta
+	
+	if is_on_floor():
+		coyote_timer = COYOTE_TIME
+	else:
+		coyote_timer -= delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and coyote_timer > 0:
 		velocity.y = JUMP_VELOCITY
 		
 	var input_y := Input.get_axis("move_up", "move_down")

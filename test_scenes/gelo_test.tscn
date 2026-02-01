@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dacxjmtgscwg" path="res://scenes/door.tscn" id="8_kb7ad"]
 [ext_resource type="PackedScene" uid="uid://br4tcgxdecluh" path="res://scenes/bridge_left.tscn" id="8_rchlh"]
 [ext_resource type="PackedScene" uid="uid://drtesvqp7c31e" path="res://scenes/checkpoint.tscn" id="10_rchlh"]
-[ext_resource type="PackedScene" path="res://scenes/ladder.tscn" id="11_5lhsb"]
+[ext_resource type="PackedScene" uid="uid://cpi8cfu2dkjsj" path="res://scenes/ladder.tscn" id="11_5lhsb"]
 [ext_resource type="PackedScene" uid="uid://q7kj83nracch" path="res://scenes/pickups/future_mask_pickup.tscn" id="12_q5k2s"]
 [ext_resource type="PackedScene" uid="uid://bng1nagcfw78q" path="res://scenes/pickups/past_mask_pickup.tscn" id="13_3soik"]
 [ext_resource type="PackedScene" uid="uid://dten0kswytnfd" path="res://scenes/ui/player_ui.tscn" id="14_3soik"]
@@ -83,7 +83,10 @@ shape = SubResource("WorldBoundaryShape2D_ig7tw")
 tile_map_data = PackedByteArray("AAAfAB0AAAACAAEAAAAeAB0AAAACAAEAAAAdAB0AAAACAAEAAAAcAB0AAAACAAEAAAAbAB0AAAACAAEAAAAaAB0AAAACAAEAAAAZAB0AAAACAAEAAAAYAB0AAAACAAEAAAAXAB0AAAACAAEAAAAWAB0AAAACAAEAAAAVAB0AAAACAAEAAAAUAB0AAAACAAEAAAATAB0AAAACAAEAAAASAB0AAAACAAEAAAARAB0AAAACAAEAAAAQAB0AAAACAAEAAAAPAB0AAAACAAEAAAAOAB0AAAACAAEAAAANAB0AAAACAAEAAAAMAB0AAAACAAEAAAALAB0AAAACAAEAAAAKAB0AAAACAAEAAAAJAB0AAAACAAEAAAAIAB0AAAACAAEAAAAHAB0AAAACAAEAAAAGAB0AAAACAAEAAAAFAB0AAAACAAEAAAAEAB0AAAACAAEAAAADAB0AAAACAAEAAAACAB0AAAACAAEAAAABAB0AAAACAAEAAAAAAB0AAAACAAEAAAAgAB0AAAACAAEAAAAhAB0AAAACAAEAAAAiAB0AAAACAAEAAAAjAB0AAAACAAEAAAAkAB0AAAACAAEAAAAlAB0AAAACAAEAAAAmAB0AAAACAAEAAAAnAB0AAAACAAEAAAAoAB0AAAACAAEAAAApAB0AAAACAAEAAAAqAB0AAAACAAEAAAArAB0AAAACAAEAAAAsAB0AAAACAAEAAAAtAB0AAAACAAEAAAAuAB0AAAACAAEAAAAvAB0AAAACAAEAAAAwAB0AAAACAAEAAAAxAB0AAAACAAEAAAAyAB0AAAACAAEAAAAzAB0AAAACAAEAAAA0AB0AAAACAAEAAAD8/x0AAAACAAEAAAD7/x0AAAACAAEAAAD6/x0AAAACAAEAAAD5/x0AAAACAAEAAAD3/x0AAAACAAEAAAD4/x0AAAACAAEAAAA4AB0AAAACAAEAAAA5AB0AAAACAAEAAAA6AB0AAAACAAEAAAA7AB0AAAACAAEAAAA=")
 tile_set = SubResource("TileSet_h2yge")
 
-[node name="KeyInFuture" parent="." instance=ExtResource("5_w7hpy")]
+[node name="KeyInFuture" parent="." groups=["show_in_future"] instance=ExtResource("5_w7hpy")]
+position = Vector2(600, 454)
+
+[node name="KeyShowNow" parent="." groups=["show_in_now_only"] instance=ExtResource("5_w7hpy")]
 position = Vector2(694, 454)
 
 [node name="LeverHandle" parent="." instance=ExtResource("7_kpe0j")]
@@ -125,4 +128,5 @@ position = Vector2(151, 448)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="PlayerUI" parent="CanvasLayer" instance=ExtResource("14_3soik")]
+[node name="PlayerUI" parent="CanvasLayer" groups=["show_in_future"] instance=ExtResource("14_3soik")]
+scale = Vector2(1, 0.9930274)
