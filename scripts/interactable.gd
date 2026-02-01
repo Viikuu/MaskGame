@@ -18,6 +18,7 @@ func interact():
 	interacted.emit()
 	if (only_once):
 		get_parent().queue_free()
+		queue_free()
 	
 func _draw() -> void:
 	if interactable_text:

@@ -445,7 +445,7 @@ animations = [{
 
 [node name="Player" parent="." instance=ExtResource("2_fep8b")]
 z_index = 4
-position = Vector2(3935, 59)
+position = Vector2(403, 308)
 
 [node name="WorldLimiterLower" type="StaticBody2D" parent="."]
 position = Vector2(492, 761)
@@ -766,13 +766,6 @@ position = Vector2(4541, 16)
 position = Vector2(4992, 69)
 texture = ExtResource("12_fvcr0")
 
-[node name="Checkpoint" parent="Node" instance=ExtResource("11_7wig4")]
-position = Vector2(648, 323)
-is_start_checkpoint = true
-
-[node name="Checkpoint2" parent="Node" instance=ExtResource("11_7wig4")]
-position = Vector2(1812, -130)
-
 [node name="Bridge" parent="Node" instance=ExtResource("12_hc1su")]
 position = Vector2(2944, 287)
 
@@ -866,3 +859,24 @@ position = Vector2(5019, 69)
 sprite_frames = SubResource("SpriteFrames_0hc0g")
 autoplay = "default"
 frame_progress = 0.041262735
+
+[node name="Checkpoints" type="Node" parent="."]
+
+[node name="Checkpoint" parent="Checkpoints" instance=ExtResource("11_7wig4")]
+position = Vector2(402, 324)
+is_start_checkpoint = true
+
+[node name="Checkpoint1" parent="Checkpoints" instance=ExtResource("11_7wig4")]
+position = Vector2(1451, -124)
+
+[node name="Checkpoint2" parent="Checkpoints" instance=ExtResource("11_7wig4")]
+position = Vector2(2233, 569)
+
+[node name="Checkpoint3" parent="Checkpoints" instance=ExtResource("11_7wig4")]
+position = Vector2(3152, 278)
+
+[node name="Checkpoint4" parent="Checkpoints" instance=ExtResource("11_7wig4")]
+position = Vector2(3832, 82)
+
+[node name="Checkpoint5" parent="Checkpoints" instance=ExtResource("11_7wig4")]
+position = Vector2(2871, 280)
