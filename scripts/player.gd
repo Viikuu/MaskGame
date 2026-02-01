@@ -96,26 +96,26 @@ func _handle_interactions_input():
 func _try_interact():
 	if not nearby_interactions:
 		return
-	var interaction = nearby_interactions.get(0)
-	if interaction.can_interact():
-		interaction.interact()
-		if interaction.only_once:
-			nearby_interactions.erase(interaction)
+	for interaction in nearby_interactions:
+		if interaction.can_interact():
+			interaction.interact()
+			if interaction.only_once:
+				nearby_interactions.erase(interaction)
+			return
 
 func _on_interaction_zone_area_entered(area: Area2D) -> void:
 	if area is Interactable:
 		nearby_interactions.append(area)
 
-func _on_interaction_zone_area_exited(area: Area2D) -> void:
+func _on_interaction_zone_area_exitded(area: Area2D) -> void:
 	if area is Interactable:
 		nearby_interactions.erase(area)
 		
-		
 func _play_movemement_animations():
 	if not is_on_floor():
-		if velocity.y > 0 and player_sprite.animation.begins_with("fall"):
+		if velocity.y > 0 and not player_sprite.animation.begins_with("fall"):
 			_play_animation("fall")
-		if velocity.y < 0 and player_sprite.animation.begins_with("jump"):
+		if velocity.y < 0 and not player_sprite.animation.begins_with("jump"):
 			_play_animation("jump")
 	else:
 		if velocity.x != 0:
@@ -124,7 +124,8 @@ func _play_movemement_animations():
 			_play_animation("idle")
 			
 func _play_animation(animation):
-	player_sprite.play(animation + "_" + str(MaskManager.current_mask))
+	var animation_identifier = animation + "_" + str(MaskManager.current_mask)
+	player_sprite.play(animation_identifier)
 	
 func die():
 	print("start death process")
