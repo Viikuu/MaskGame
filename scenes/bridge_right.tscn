@@ -41,7 +41,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_im2sa"]
-size = Vector2(48, 11)
+size = Vector2(80, 11)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1q54l"]
 size = Vector2(12, 48)
@@ -68,7 +68,7 @@ shape = SubResource("RectangleShape2D_im2sa")
 disabled = true
 
 [node name="CollisionShapeOpened" type="CollisionShape2D" parent="."]
-position = Vector2(5.5, -24)
+position = Vector2(5.5000005, -40)
 rotation = 1.5707964
 shape = SubResource("RectangleShape2D_im2sa")
 
