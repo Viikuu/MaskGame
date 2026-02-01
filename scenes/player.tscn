@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bt3loh5cols1i"]
+[gd_scene load_steps=35 format=3 uid="uid://bt3loh5cols1i"]
 
 [ext_resource type="Script" uid="uid://dckrhc5heh0nw" path="res://scripts/player.gd" id="1_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://ffks0n7yluwy" path="res://art_me/Character/Dżoszuła_Fall_Przeszłość.png" id="2_f1ej7"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://c3r61vrl0ppx6" path="res://art_me/Character/Dżoszuła_Walk_Przyszłość.png" id="13_i4ail"]
 [ext_resource type="PackedScene" uid="uid://ceo2qxlpfcqer" path="res://scenes/reveal_zone.tscn" id="14_f1ej7"]
 [ext_resource type="PackedScene" uid="uid://d1isr44cun43a" path="res://scenes/camera_rig.tscn" id="15_oprun"]
+[ext_resource type="PackedScene" uid="uid://6a7wlxrf3bun" path="res://scenes/mask_effect_bubble.tscn" id="16_a8ls1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a38lo"]
 atlas = ExtResource("11_60mlk")
@@ -314,6 +315,9 @@ wait_time = 0.5
 [node name="CameraRig" parent="." instance=ExtResource("15_oprun")]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="MaskEffectZoneOnInteractables" parent="." instance=ExtResource("16_a8ls1")]
+scale = Vector2(6, 6)
 
 [connection signal="area_entered" from="InteractionZone" to="." method="_on_interaction_zone_area_entered"]
 [connection signal="area_exited" from="InteractionZone" to="." method="_on_interaction_zone_area_exited"]

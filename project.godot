@@ -35,6 +35,9 @@ future_visible=""
 past_source=""
 past_visible=""
 present=""
+show_in_now_only=""
+show_in_future=""
+show_in_past=""
 
 [input]
 
