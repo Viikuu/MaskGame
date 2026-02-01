@@ -79,6 +79,7 @@ one_shot = true
 collision_layer = 12
 collision_mask = 0
 script = ExtResource("2_im2sa")
+text = "\"F\""
 metadata/_custom_type_script = "uid://buno5pkjjq2c0"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable"]
