@@ -9,7 +9,7 @@ func _on_start_game_pressed() -> void:
 
 
 func _on_about_pressed() -> void:
-	about_window.open("About sample text")
+	about_window.open("Dżosz is a great thief that travels through time to pet cats and stop evil wizards")
 
 
 func _on_quit_pressed() -> void:

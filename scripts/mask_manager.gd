@@ -8,7 +8,7 @@ signal future_mask_available
 enum MASK {PAST, NOW, FUTURE}
 
 var current_mask = MASK.NOW
-var _past_mask_enabled = true
+var _past_mask_enabled = false
 var _future_mask_enabled = false
 
 func _ready():
