@@ -372,7 +372,7 @@ sources/0 = SubResource("TileSetAtlasSource_iypu5")
 
 [node name="Player" parent="." instance=ExtResource("2_fep8b")]
 z_index = 4
-position = Vector2(446, 315)
+position = Vector2(1590, -156)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(4, 4)
@@ -490,7 +490,7 @@ position = Vector2(1503, -144)
 [node name="Door2" parent="OutOfTime" groups=["show_in_future", "show_in_now_only", "show_in_past"] instance=ExtResource("8_jvq3k")]
 position = Vector2(2370, 553)
 
-[node name="Bridge" parent="OutOfTime" groups=["show_in_future", "show_in_past"] instance=ExtResource("12_hc1su")]
+[node name="Bridge" parent="OutOfTime" groups=["show_in_now_only"] instance=ExtResource("12_hc1su")]
 position = Vector2(1727, -121)
 collision_layer = 9
 
