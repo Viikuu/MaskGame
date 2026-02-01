@@ -97,7 +97,7 @@ func _try_interact():
 	if not nearby_interactions:
 		return
 	for interaction in nearby_interactions:
-		if interaction.can_interact():
+		if interaction and interaction.can_interact():
 			interaction.interact()
 			if interaction.only_once:
 				nearby_interactions.erase(interaction)
