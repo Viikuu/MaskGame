@@ -19,6 +19,7 @@ script = ExtResource("1_wy8tx")
 [node name="Interactable" parent="." instance=ExtResource("1_fttkb")]
 collision_layer = 12
 only_once = true
+text = "Press F to pickup"
 
 [node name="InteractionAndMaskZone" type="CollisionShape2D" parent="Interactable"]
 shape = SubResource("RectangleShape2D_wy8tx")
