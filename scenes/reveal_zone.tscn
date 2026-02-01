@@ -127,7 +127,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"close",
-"speed": 10.0
+"speed": 50.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -197,7 +197,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"open",
-"speed": 10.0
+"speed": 24.0
 }]
 
 [node name="RevealZone" type="Area2D"]
