@@ -21,6 +21,7 @@ script = ExtResource("1_ul6vx")
 [node name="Interactable" parent="." instance=ExtResource("2_wpuov")]
 collision_layer = 12
 only_once = true
+text = "\"F\" TO PICK UP"
 
 [node name="InteractionAndMaskZone" type="CollisionShape2D" parent="Interactable"]
 position = Vector2(0, 3)
