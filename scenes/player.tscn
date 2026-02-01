@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bt3loh5cols1i"]
+[gd_scene load_steps=47 format=3 uid="uid://bt3loh5cols1i"]
 
 [ext_resource type="Script" uid="uid://dckrhc5heh0nw" path="res://scripts/player.gd" id="1_tuyoq"]
 [ext_resource type="Texture2D" uid="uid://ffks0n7yluwy" path="res://art_me/Character/Dżoszuła_Fall_Przeszłość.png" id="2_f1ej7"]
@@ -16,6 +16,16 @@
 [ext_resource type="PackedScene" uid="uid://ceo2qxlpfcqer" path="res://scenes/reveal_zone.tscn" id="14_f1ej7"]
 [ext_resource type="PackedScene" uid="uid://d1isr44cun43a" path="res://scenes/camera_rig.tscn" id="15_oprun"]
 [ext_resource type="PackedScene" uid="uid://6a7wlxrf3bun" path="res://scenes/mask_effect_bubble.tscn" id="16_a8ls1"]
+[ext_resource type="AudioStream" uid="uid://cjgje7cwexr84" path="res://audio/jump-1.wav" id="17_4r5pv"]
+[ext_resource type="AudioStream" uid="uid://ctwifqbh53qhk" path="res://audio/jump-2.wav" id="18_60mlk"]
+[ext_resource type="AudioStream" uid="uid://ckeji457rg1o4" path="res://audio/jump-3.wav" id="19_i4ail"]
+[ext_resource type="AudioStream" uid="uid://bf61rh2rdnteo" path="res://audio/sand-walking.wav" id="20_60mlk"]
+[ext_resource type="AudioStream" uid="uid://cnsq0ewmec8kw" path="res://audio/death-1.wav" id="21_4ni07"]
+[ext_resource type="AudioStream" uid="uid://dgoqgiy77lk7a" path="res://audio/death-2.wav" id="22_l71n6"]
+[ext_resource type="AudioStream" uid="uid://c5niu511yeagv" path="res://audio/death-3.wav" id="23_ke2ow"]
+[ext_resource type="AudioStream" uid="uid://r6glsh5yce5e" path="res://audio/pickup.wav" id="24_ke2ow"]
+[ext_resource type="AudioStream" uid="uid://y1ldskwnnpsg" path="res://audio/interaction-sound.wav" id="25_ujl30"]
+[ext_resource type="AudioStream" uid="uid://nykqx36pla8l" path="res://audio/mask-puton.wav" id="26_ujl30"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a38lo"]
 atlas = ExtResource("11_60mlk")
@@ -225,6 +235,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Audio/DeathSound:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_f1ej7"]
 resource_name = "death"
@@ -252,12 +274,36 @@ tracks/1/keys = {
 "update": 0,
 "values": [0.0, 1.1913568]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Audio/DeathSound:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a8ls1"]
 _data = {
 &"RESET": SubResource("Animation_oprun"),
 &"death": SubResource("Animation_f1ej7")
 }
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_a38lo"]
+streams_count = 3
+stream_0/stream = ExtResource("17_4r5pv")
+stream_1/stream = ExtResource("18_60mlk")
+stream_2/stream = ExtResource("19_i4ail")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ujl30"]
+streams_count = 3
+stream_0/stream = ExtResource("21_4ni07")
+stream_1/stream = ExtResource("22_l71n6")
+stream_2/stream = ExtResource("23_ke2ow")
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
@@ -270,7 +316,7 @@ JUMP_VELOCITY = -300.0
 [node name="Future" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.9918935, 1)
 sprite_frames = SubResource("SpriteFrames_sh265")
-animation = &"walk_2"
+animation = &"jump_1"
 
 [node name="ItemSprite" type="Sprite2D" parent="Future"]
 scale = Vector2(1.0164123, 0.9999999)
@@ -318,6 +364,36 @@ wait_time = 0.5
 
 [node name="MaskEffectZoneOnInteractables" parent="." instance=ExtResource("16_a8ls1")]
 scale = Vector2(6, 6)
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="JumpSound" type="AudioStreamPlayer2D" parent="Audio"]
+stream = SubResource("AudioStreamRandomizer_a38lo")
+volume_db = 1.0
+bus = &"SFX"
+
+[node name="WalkingSound" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("20_60mlk")
+volume_db = 1.0
+bus = &"SFX"
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="Audio"]
+process_mode = 3
+stream = SubResource("AudioStreamRandomizer_ujl30")
+volume_db = 1.0
+bus = &"SFX"
+
+[node name="ItemPickupSound" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("24_ke2ow")
+volume_db = 1.0
+
+[node name="InteractionSound" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("25_ujl30")
+volume_db = 24.0
+
+[node name="MaskChangeSound" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("26_ujl30")
+volume_db = 1.0
 
 [connection signal="area_entered" from="InteractionZone" to="." method="_on_interaction_zone_area_entered"]
 [connection signal="area_exited" from="InteractionZone" to="." method="_on_interaction_zone_area_exited"]

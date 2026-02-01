@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://ht5fv5dnoji5"]
+
+[ext_resource type="AudioStream" uid="uid://b5yeabltj4k08" path="res://audio/powaga-song.wav" id="1_aw8cc"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_aw8cc")
+volume_db = 0.1
+autoplay = true
+bus = &"Music"
