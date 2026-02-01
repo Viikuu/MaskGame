@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://b8oq4xligphkr"]
+[gd_scene load_steps=36 format=4 uid="uid://b8oq4xligphkr"]
 
 [ext_resource type="PackedScene" uid="uid://bt3loh5cols1i" path="res://scenes/player.tscn" id="2_fep8b"]
 [ext_resource type="Texture2D" uid="uid://ddtwrmhncvcdj" path="res://tileset/Tilesheetv1.png" id="4_iypu5"]
@@ -377,6 +377,9 @@ sources/0 = SubResource("TileSetAtlasSource_iypu5")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_y2tlm"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y2tlm"]
+size = Vector2(10, 59)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_661xf"]
 atlas = ExtResource("13_11hl5")
 region = Rect2(0, 0, 16, 32)
@@ -466,7 +469,7 @@ scale = Vector2(0.4, 0.4)
 size_flags_horizontal = 4
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
-text = "\"F\" PET TO GET CHECK POINT "
+text = "\"F\" PET TO GET CHECKPOINT "
 horizontal_alignment = 1
 
 [node name="InteractableText3" type="Label" parent="."]
@@ -521,6 +524,19 @@ theme_override_constants/outline_size = 4
 text = "\"E\" TO GO INTO THE FUTURE"
 horizontal_alignment = 1
 
+[node name="InteractableText9" type="Label" parent="."]
+z_index = 999
+offset_left = 1812.0
+offset_top = -179.0
+offset_right = 2132.0
+offset_bottom = -156.00002
+scale = Vector2(0.4, 0.4)
+size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "\"F\" TO PICK UP"
+horizontal_alignment = 1
+
 [node name="InteractableText7" type="Label" parent="."]
 z_index = 999
 offset_left = 4945.0
@@ -549,7 +565,7 @@ horizontal_alignment = 1
 
 [node name="Player" parent="." instance=ExtResource("2_fep8b")]
 z_index = 4
-position = Vector2(406, 316)
+position = Vector2(1911, -153)
 
 [node name="WorldLimiterLower" type="StaticBody2D" parent="."]
 position = Vector2(492, 761)
@@ -1078,53 +1094,74 @@ texture = ExtResource("19_y2tlm")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Area2D"]
 shape = SubResource("CircleShape2D_y2tlm")
 
-[node name="LadderBroken" type="Sprite2D" parent="Node" groups=["show_in_past"]]
-position = Vector2(2318, 568)
+[node name="Area2D2" type="Area2D" parent="Node" groups=["show_in_past"]]
+position = Vector2(2318, 569)
+collision_layer = 5
+
+[node name="LadderBroken" type="Sprite2D" parent="Node/Area2D2"]
 texture = ExtResource("20_menjm")
 
-[node name="LadderBroken2" type="Sprite2D" parent="Node/LadderBroken" groups=["show_in_past"]]
+[node name="LadderBroken2" type="Sprite2D" parent="Node/Area2D2/LadderBroken"]
 position = Vector2(0, -15)
 texture = ExtResource("20_menjm")
 
-[node name="LadderBroken3" type="Sprite2D" parent="Node/LadderBroken" groups=["show_in_past"]]
+[node name="LadderBroken3" type="Sprite2D" parent="Node/Area2D2/LadderBroken"]
 position = Vector2(0, -30)
 texture = ExtResource("20_menjm")
 
-[node name="LadderBroken4" type="Sprite2D" parent="Node/LadderBroken" groups=["show_in_past"]]
+[node name="LadderBroken4" type="Sprite2D" parent="Node/Area2D2/LadderBroken"]
 position = Vector2(0, -44)
 texture = ExtResource("20_menjm")
 
-[node name="LadderBroken2" type="Sprite2D" parent="Node" groups=["show_in_past"]]
-position = Vector2(2442, 473)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Area2D2"]
+position = Vector2(-3, -21.5)
+shape = SubResource("RectangleShape2D_y2tlm")
+
+[node name="Area2D3" type="Area2D" parent="Node" groups=["show_in_past"]]
+position = Vector2(2442, 476)
+collision_layer = 5
+
+[node name="LadderBroken" type="Sprite2D" parent="Node/Area2D3"]
 texture = ExtResource("20_menjm")
 
-[node name="LadderBroken2" type="Sprite2D" parent="Node/LadderBroken2" groups=["show_in_past"]]
+[node name="LadderBroken2" type="Sprite2D" parent="Node/Area2D3/LadderBroken"]
 position = Vector2(0, -15)
 texture = ExtResource("20_menjm")
 
-[node name="LadderBroken3" type="Sprite2D" parent="Node/LadderBroken2" groups=["show_in_past"]]
+[node name="LadderBroken3" type="Sprite2D" parent="Node/Area2D3/LadderBroken"]
 position = Vector2(0, -30)
 texture = ExtResource("20_menjm")
 
-[node name="LadderBroken4" type="Sprite2D" parent="Node/LadderBroken2" groups=["show_in_past"]]
+[node name="LadderBroken4" type="Sprite2D" parent="Node/Area2D3/LadderBroken"]
 position = Vector2(0, -44)
 texture = ExtResource("20_menjm")
 
-[node name="LadderBroken3" type="Sprite2D" parent="Node" groups=["show_in_past"]]
-position = Vector2(2670, 216)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Area2D3"]
+position = Vector2(-3, -21.5)
+shape = SubResource("RectangleShape2D_y2tlm")
+
+[node name="Area2D4" type="Area2D" parent="Node" groups=["show_in_past"]]
+position = Vector2(2670, 215)
+collision_layer = 5
+
+[node name="LadderBroken" type="Sprite2D" parent="Node/Area2D4"]
 texture = ExtResource("20_menjm")
 
-[node name="LadderBroken2" type="Sprite2D" parent="Node/LadderBroken3" groups=["show_in_past"]]
+[node name="LadderBroken2" type="Sprite2D" parent="Node/Area2D4/LadderBroken"]
 position = Vector2(0, -15)
 texture = ExtResource("20_menjm")
 
-[node name="LadderBroken3" type="Sprite2D" parent="Node/LadderBroken3" groups=["show_in_past"]]
+[node name="LadderBroken3" type="Sprite2D" parent="Node/Area2D4/LadderBroken"]
 position = Vector2(0, -30)
 texture = ExtResource("20_menjm")
 
-[node name="LadderBroken4" type="Sprite2D" parent="Node/LadderBroken3" groups=["show_in_past"]]
+[node name="LadderBroken4" type="Sprite2D" parent="Node/Area2D4/LadderBroken"]
 position = Vector2(0, -44)
 texture = ExtResource("20_menjm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Area2D4"]
+position = Vector2(-3, -21.5)
+shape = SubResource("RectangleShape2D_y2tlm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node"]
 position = Vector2(5019, 69)
