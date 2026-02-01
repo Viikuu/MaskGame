@@ -14,6 +14,12 @@ var coyote_timer = 0
 @onready var player_sprite: AnimatedSprite2D = $Future
 @onready var item_sprite: Sprite2D = $Future/ItemSprite
 
+@onready var jump_sound: AudioStreamPlayer2D = $Audio/JumpSound
+@onready var walking_sound: AudioStreamPlayer2D = $Audio/WalkingSound
+@onready var item_pickup_sound: AudioStreamPlayer2D = $Audio/ItemPickupSound
+@onready var interaction_sound: AudioStreamPlayer2D = $Audio/InteractionSound
+@onready var mask_change_sound: AudioStreamPlayer2D = $Audio/MaskChangeSound
+
 @export var SPEED = 100.0
 @export var JUMP_VELOCITY = -200.0
 @export var CLIMB_SPEED = 75
@@ -31,11 +37,19 @@ var nearby_interactions: Array[Interactable] = []
 
 func _ready() -> void:
 	InventoryManager.item_changed.connect(onItemChange)
+	MaskManager.mask_changed.connect(onMaskChange)
+	
+func onMaskChange(oldMask, newMask):
+	if newMask != oldMask:
+		mask_change_sound.play()
 
 func onItemChange(new_item: Item):
 	if new_item != null:
 		item_sprite.texture = new_item.in_hand_texture
+		item_pickup_sound.play()
 	else:
+		if item_sprite.texture != null:
+			interaction_sound.play()	
 		item_sprite.texture = null
 
 func _physics_process(delta: float) -> void:
@@ -117,11 +131,16 @@ func _play_movemement_animations():
 			_play_animation("fall")
 		if velocity.y < 0 and not player_sprite.animation.begins_with("jump"):
 			_play_animation("jump")
+			if not jump_sound.playing:
+				jump_sound.play()
 	else:
 		if velocity.x != 0:
 			_play_animation("walk")
+			if not walking_sound.playing:
+				walking_sound.play()
 		else:
 			_play_animation("idle")
+			walking_sound.stop()
 			
 func _play_animation(animation):
 	var animation_identifier = animation + "_" + str(MaskManager.current_mask)
@@ -144,3 +163,4 @@ func _on_death_timer_timeout() -> void:
 # Killzone interactions
 func _on_killzone_detector_body_entered(body: Node2D) -> void:
 	die()
+	

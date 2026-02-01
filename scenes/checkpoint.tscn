@@ -1,9 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://drtesvqp7c31e"]
+[gd_scene load_steps=23 format=3 uid="uid://drtesvqp7c31e"]
 
 [ext_resource type="Texture2D" uid="uid://cabfgrktp512k" path="res://art_me/Character/Cat_Idlet.png" id="1_vsimk"]
 [ext_resource type="Script" uid="uid://caqu4rkadkfmx" path="res://scripts/checkpoint/checkpoint.gd" id="1_yqsag"]
 [ext_resource type="Texture2D" uid="uid://23j5tspn23xq" path="res://art_me/Character/Cat_Checkpoint.png" id="2_yqsag"]
 [ext_resource type="Script" uid="uid://buno5pkjjq2c0" path="res://scripts/interactable.gd" id="3_c45tw"]
+[ext_resource type="AudioStream" uid="uid://be1nxc1fqi6jq" path="res://audio/meow-1.wav" id="5_55jpe"]
+[ext_resource type="AudioStream" uid="uid://cpmfvdiru34tk" path="res://audio/meow-2.wav" id="6_vc08m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_55jpe"]
 atlas = ExtResource("1_vsimk")
@@ -111,6 +113,11 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vsimk"]
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_tl56q"]
+streams_count = 2
+stream_0/stream = ExtResource("5_55jpe")
+stream_1/stream = ExtResource("6_vc08m")
+
 [node name="Checkpoint" type="Node2D"]
 script = ExtResource("1_yqsag")
 
@@ -131,3 +138,7 @@ shape = SubResource("CircleShape2D_vsimk")
 
 [node name="RespawnPoint" type="Node2D" parent="."]
 position = Vector2(21, 0)
+
+[node name="CatMeow" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_tl56q")
+volume_db = 1.0
