@@ -26,6 +26,7 @@ func _process(_delta: float) -> void:
 func switch_mask(mask):
 	var old_mask = current_mask
 	current_mask = mask
+	_handle_interactable_group_switching()
 	mask_changed.emit(old_mask, current_mask)
 	
 func enable_past_mask():
@@ -35,3 +36,15 @@ func enable_past_mask():
 func enable_future_mask():
 	future_mask_available.emit()
 	_future_mask_enabled = true
+	
+func _handle_interactable_group_switching():
+	if (current_mask == MASK.PAST):
+		get_tree().call_group("show_in_now_only", "hide")
+		get_tree().call_group("show_in_future", "hide")
+	if (current_mask == MASK.NOW):
+		get_tree().call_group("show_in_past", "hide")
+		get_tree().call_group("show_in_future", "hide")
+		get_tree().call_group("show_in_now_only", "show")
+	if (current_mask == MASK.FUTURE):
+		get_tree().call_group("show_in_past", "hide")
+		get_tree().call_group("show_in_now_only", "hide")
